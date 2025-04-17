@@ -356,6 +356,11 @@ async function loadIcons(filter = "") {
         canvas.className = "icon";
         canvas.dataset.name = icon.name;
         canvas.dataset.src = icon.src;
+        
+        // Add the selected class if this icon is in the selectedIcons array
+        if (selectedIcons.includes(icon.name)) {
+            canvas.classList.add("selected");
+        }
 
         const ctx = canvas.getContext("2d");
 
