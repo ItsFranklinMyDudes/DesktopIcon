@@ -4,7 +4,7 @@ const path = require("path");
 const archiver = require("archiver");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware to block mobile users
 app.use((req, res, next) => {
