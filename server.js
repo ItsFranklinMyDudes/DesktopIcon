@@ -27,6 +27,42 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Middleware to delete old files after a certain period
+const deleteOldFiles = (directory, maxAgeMs) => {
+    setInterval(() => {
+        fs.readdir(directory, (err, files) => {
+            if (err) {
+                console.error(`Error reading directory ${directory}:`, err);
+                return;
+            }
+
+            const now = Date.now();
+            files.forEach(file => {
+                const filePath = path.join(directory, file);
+                fs.stat(filePath, (err, stats) => {
+                    if (err) {
+                        console.error(`Error getting stats for file ${filePath}:`, err);
+                        return;
+                    }
+
+                    if (now - stats.mtimeMs > maxAgeMs) {
+                        fs.unlink(filePath, err => {
+                            if (err) {
+                                console.error(`Error deleting file ${filePath}:`, err);
+                            } else {
+                                console.log(`Deleted old file: ${filePath}`);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    }, maxAgeMs);
+};
+
+// Start deleting old files every 24 hours (86400000 ms)
+deleteOldFiles(uploadsDir, 86400000);
+
 // Middleware to block mobile users
 app.use((req, res, next) => {
     const userAgent = req.headers['user-agent'] || '';

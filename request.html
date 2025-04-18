@@ -129,8 +129,9 @@
                         {
                             title: "New Icon Request",
                             fields: [
-                                { name: "Icon Name", value: formData.get("icon-name") || "N/A" },
-                                { name: "Requester Email", value: formData.get("requester-email") || "N/A" }
+                                { name: "Icon Name:", value: formData.get("icon-name") || "N/A" },
+                                { name: "Requester Email:", value: formData.get("requester-email") || "N/A" },
+                                { name: "Image URL:", value: imageUrl || "N/A" }
                             ],
                             image: { url: imageUrl },
                             color: 3447003
