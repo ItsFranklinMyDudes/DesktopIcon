@@ -137,7 +137,6 @@
                         }
                     ]
                 };
-
                 console.log('Payload:', payload);
 
                 // Send the payload to the Discord webhook
@@ -148,6 +147,8 @@
                 });
 
                 if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Webhook response:', errorText);
                     throw new Error(`Failed to send webhook: ${response.statusText}`);
                 }
 

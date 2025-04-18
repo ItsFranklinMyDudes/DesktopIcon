@@ -8,6 +8,12 @@ const multer = require('multer'); // Add multer for file uploads
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Ensure the uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 // Configure multer for file uploads with .png extension
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
