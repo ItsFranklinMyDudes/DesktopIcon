@@ -17,6 +17,17 @@
     <div class="content-container">
         <main class="request-main">
             <div class="form-container">
+                <!-- Cooldown notification -->
+                <div id="cooldown-notification" class="cooldown-notification hidden">
+                    <p>You're on cooldown. Please try again in <span id="cooldown-time">60</span> minute(s).</p>
+                </div>
+                
+                <!-- Success notification -->
+                <div id="success-notification" class="success-notification hidden">
+                    <p>Your icon request has been submitted successfully!</p>
+                    <a href="/" class="back-link">Back to Icon Selector</a>
+                </div>
+
                 <form id="icon-request-form">
                     <div class="form-group">
                         <label for="icon-name">Icon Name:</label>
@@ -53,18 +64,33 @@
     </div>
 
     <script>
-        let webhookUrl;
-
-        (async () => {
-            const response = await fetch('/api/webhook-url');
-            const data = await response.json();
-            webhookUrl = data.webhookUrl;
-        })();
-
         // File upload preview
         const fileInput = document.getElementById('icon-image');
         const filePreview = document.querySelector('.file-preview');
         const uploadText = document.querySelector('.upload-text');
+        const cooldownNotification = document.getElementById('cooldown-notification');
+        const cooldownTimeSpan = document.getElementById('cooldown-time');
+        const successNotification = document.getElementById('success-notification');
+        const form = document.getElementById('icon-request-form');
+
+        // Check for cooldown in localStorage
+        function checkCooldown() {
+            const cooldownUntil = localStorage.getItem('iconRequestCooldown');
+            if (cooldownUntil && parseInt(cooldownUntil) > Date.now()) {
+                // Calculate minutes remaining
+                const minutesRemaining = Math.ceil((parseInt(cooldownUntil) - Date.now()) / 60000);
+                cooldownTimeSpan.textContent = minutesRemaining;
+                cooldownNotification.classList.remove('hidden');
+                form.classList.add('hidden');
+                return true;
+            }
+            return false;
+        }
+
+        // Run cooldown check on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            checkCooldown();
+        });
 
         fileInput.addEventListener('change', handleFileInputChange);
 
@@ -96,11 +122,15 @@
         }
 
         // Form submission handling
-        const form = document.getElementById('icon-request-form');
         form.addEventListener('submit', handleFormSubmit);
 
         async function handleFormSubmit(e) {
             e.preventDefault();
+
+            // Check cooldown again just to be safe
+            if (checkCooldown()) {
+                return;
+            }
 
             const submitBtn = document.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
@@ -108,57 +138,45 @@
             setButtonLoadingState(submitBtn, true, 'Submitting...');
 
             try {
+                // Create FormData from the form
                 const formData = new FormData(form);
-
-                // Upload the image to the server
-                const uploadResponse = await fetch('/api/upload-image', {
+                
+                // Send to your server endpoint
+                const response = await fetch('/api/submit-request', {
                     method: 'POST',
                     body: formData
                 });
 
-                if (!uploadResponse.ok) {
-                    throw new Error('Failed to upload image');
-                }
-
-                const { imageUrl } = await uploadResponse.json();
-
-                // Prepare the Discord webhook payload
-                const payload = {
-                    username: "Icon Request Bot",
-                    embeds: [
-                        {
-                            title: "New Icon Request",
-                            fields: [
-                                { name: "Icon Name:", value: formData.get("icon-name") || "N/A" },
-                                { name: "Requester Email:", value: formData.get("requester-email") || "N/A" },
-                                { name: "Image URL:", value: imageUrl || "N/A" }
-                            ],
-                            image: { url: imageUrl },
-                            color: 3447003
-                        }
-                    ]
-                };
-                console.log('Payload:', payload);
-
-                // Send the payload to the Discord webhook
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error('Webhook response:', errorText);
-                    throw new Error(`Failed to send webhook: ${response.statusText}`);
+                    const data = await response.json();
+                    
+                    // Handle cooldown response
+                    if (response.status === 429) {
+                        const minutesRemaining = parseInt(data.error.match(/\d+/)[0]);
+                        const cooldownUntil = Date.now() + (minutesRemaining * 60 * 1000);
+                        
+                        // Store cooldown in localStorage
+                        localStorage.setItem('iconRequestCooldown', cooldownUntil);
+                        
+                        cooldownTimeSpan.textContent = minutesRemaining;
+                        cooldownNotification.classList.remove('hidden');
+                        form.classList.add('hidden');
+                        return;
+                    }
+                    
+                    throw new Error(data.error || 'Request failed');
                 }
 
-                alert('Your icon request has been submitted successfully!');
-                // Comment out the redirect for testing purposes
-                // window.location.href = '/';
+                // Show success message
+                successNotification.classList.remove('hidden');
+                form.classList.add('hidden');
+                
+                // Set cooldown in localStorage (1 hour)
+                const oneHourFromNow = Date.now() + (60 * 60 * 1000);
+                localStorage.setItem('iconRequestCooldown', oneHourFromNow);
             } catch (error) {
                 console.error('Error submitting form:', error);
-                alert('There was an error submitting your request. Please try again.');
+                alert('There was an error submitting your request: ' + error.message);
             } finally {
                 setButtonLoadingState(submitBtn, false, originalText);
             }

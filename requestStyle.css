@@ -195,6 +195,55 @@ header {
     transform: translateY(1px);
 }
 
+/* Add these styles to the end of requestStyle.css */
+
+.cooldown-notification,
+.success-notification {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.cooldown-notification {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.success-notification {
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+form.hidden {
+    display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .request-main {
