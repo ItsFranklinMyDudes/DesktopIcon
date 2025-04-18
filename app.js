@@ -1,6 +1,6 @@
 const iconContainer = document.getElementById("icon-container");
 const searchBar = document.getElementById("search-bar");
-const confirmButton = document.getElementById("confirm-selection");
+const confirmButton = document.getElementById("download-selection");
 const colorPicker = document.getElementById("color-picker"); // Hidden original color picker
 const colorOptions = document.querySelectorAll(".color-option");
 
@@ -452,6 +452,7 @@ function captureColoredIcon(canvas) {
     return tempCanvas.toDataURL('image/png').split(',')[1]; // Remove the "data:image/png;base64," part
 }
 
+
 // Loading overlay element
 const loadingOverlay = document.querySelector(".loading-overlay");
 
@@ -507,6 +508,11 @@ confirmButton.addEventListener("click", async () => {
         // Hide loading spinner
         loadingOverlay.classList.remove("active");
     }
+});
+
+document.getElementById("reset-selection").addEventListener("click", () => {
+    selectedIcons = [];
+    updateSelectionUI();
 });
 
 // Initial load of icons

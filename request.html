@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Request | Desktop Icon Selector</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="requestStyle.css">
+</head>
+
+<body>
+    <header>
+        <h1>Request a New Icon</h1>
+    </header>
+
+    <div class="content-container">
+        <main class="request-main">
+            <div class="form-container">
+                <form id="icon-request-form">
+                    <div class="form-group">
+                        <label for="icon-name">Icon Name:</label>
+                        <input type="text" id="icon-name" name="icon-name" required="true"
+                            placeholder="Enter icon name...">
+                    </div>
+
+                    <div class="form-group file-input-container">
+                        <label for="icon-image">Upload Reference Image:</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="icon-image" name="icon-image" accept="image/*" required="true">
+                            <div class="file-upload-label">
+                                <span class="upload-icon">↑</span>
+                                <span class="upload-text">Choose a file or drag it here</span>
+                            </div>
+                            <div class="file-preview"></div>
+                        </div>
+                        <p class="file-help-text">Supported formats: PNG, JPG, SVG (Max 5MB)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requester-email">Your Email (optional):</label>
+                        <input type="email" id="requester-email" name="requester-email"
+                            placeholder="For notification when your icon is ready">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit Request</button>
+                        <a href="/" class="cancel-btn">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let webhookUrl;
+
+        (async () => {
+            const response = await fetch('/api/webhook-url');
+            const data = await response.json();
+            webhookUrl = data.webhookUrl;
+        })();
+
+        // File upload preview
+        const fileInput = document.getElementById('icon-image');
+        const filePreview = document.querySelector('.file-preview');
+        const uploadText = document.querySelector('.upload-text');
+
+        fileInput.addEventListener('change', handleFileInputChange);
+
+        function handleFileInputChange() {
+            const file = this.files?.[0];
+
+            if (file) {
+                uploadText.textContent = file.name;
+
+                if (file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => displayFilePreview(e.target.result);
+                    reader.readAsDataURL(file);
+                }
+            } else {
+                resetFilePreview();
+            }
+        }
+
+        function displayFilePreview(imageSrc) {
+            filePreview.innerHTML = `<img src="${imageSrc}" alt="Preview">`;
+            filePreview.style.display = 'block';
+        }
+
+        function resetFilePreview() {
+            uploadText.textContent = 'Choose a file or drag it here';
+            filePreview.innerHTML = '';
+            filePreview.style.display = 'none';
+        }
+
+        // Form submission handling
+        const form = document.getElementById('icon-request-form');
+        form.addEventListener('submit', handleFormSubmit);
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+
+            setButtonLoadingState(submitBtn, true, 'Submitting...');
+
+            try {
+                const formData = new FormData(form);
+
+                // Upload the image to the server
+                const uploadResponse = await fetch('/api/upload-image', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!uploadResponse.ok) {
+                    throw new Error('Failed to upload image');
+                }
+
+                const { imageUrl } = await uploadResponse.json();
+
+                // Prepare the Discord webhook payload
+                const payload = {
+                    username: "Icon Request Bot",
+                    embeds: [
+                        {
+                            title: "New Icon Request",
+                            fields: [
+                                { name: "Icon Name", value: formData.get("icon-name") || "N/A" },
+                                { name: "Requester Email", value: formData.get("requester-email") || "N/A" }
+                            ],
+                            image: { url: imageUrl },
+                            color: 3447003
+                        }
+                    ]
+                };
+
+                console.log('Payload:', payload);
+
+                // Send the payload to the Discord webhook
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Failed to send webhook: ${response.statusText}`);
+                }
+
+                alert('Your icon request has been submitted successfully!');
+                // Comment out the redirect for testing purposes
+                // window.location.href = '/';
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error submitting your request. Please try again.');
+            } finally {
+                setButtonLoadingState(submitBtn, false, originalText);
+            }
+        }
+
+        function setButtonLoadingState(button, isLoading, text) {
+            button.textContent = text;
+            button.disabled = isLoading;
+        }
+    </script>
+</body>
+
+</html>

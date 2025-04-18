@@ -4,21 +4,23 @@
     "description": "A web application for selecting and customizing desktop icons",
     "main": "server.js",
     "scripts": {
-      "start": "node server.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
-      "icons",
-      "desktop",
-      "customization"
+        "icons",
+        "desktop",
+        "customization"
     ],
     "author": "",
     "license": "MIT",
     "dependencies": {
-      "express": "^4.18.2",
-      "archiver": "^6.0.1"
+        "archiver": "^6.0.1",
+        "dotenv": "^16.5.0",
+        "express": "^4.18.2",
+        "multer": "^1.4.5-lts.2"
     },
     "engines": {
-      "node": ">=14.0.0"
+        "node": ">=14.0.0"
     }
-  }
+}

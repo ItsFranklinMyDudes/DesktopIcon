@@ -1,0 +1,226 @@
+header {
+    max-width: 720px;
+}
+
+/* Additional styles specific to the request form page */
+.request-main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background-color: #34495e;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+    width: 100%;
+}
+
+#icon-request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #ecf0f1;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    background-color: white;
+}
+
+.file-input-container {
+    position: relative;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    margin-top: 5px;
+    height: 120px;
+    border: 2px dashed #7f8c8d;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #3498db;
+}
+
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.file-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ecf0f1;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.upload-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #3498db;
+}
+
+.file-help-text {
+    color: #95a5a6;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.file-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.file-preview img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.submit-btn, .cancel-btn {
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    flex: 1;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(52, 152, 219, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(52, 152, 219, 0.4);
+}
+
+.submit-btn:disabled {
+    background-color: #95a5a6;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: #ecf0f1;
+    border: 2px solid #95a5a6;
+    padding: 12px 20px;
+}
+
+.cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #bdc3c7;
+    transform: translateY(-2px);
+}
+
+.cancel-btn:active {
+    transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .request-main {
+        padding: 25px 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .cancel-btn {
+        order: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .request-main {
+        padding: 20px 15px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+    }
+    
+    .file-upload-wrapper {
+        height: 100px;
+    }
+}

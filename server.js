@@ -2,9 +2,24 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const archiver = require("archiver");
+require('dotenv').config(); // Add this line to load environment variables
+const multer = require('multer'); // Add multer for file uploads
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Configure multer for file uploads with .png extension
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, 'uploads/'));
+    },
+    filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}.png`;
+        cb(null, uniqueName);
+    }
+});
+
+const upload = multer({ storage });
 
 // Middleware to block mobile users
 app.use((req, res, next) => {
@@ -70,6 +85,16 @@ app.get("/api/icons", (req, res) => {
     });
 });
 
+// Endpoint to expose the webhook URL
+app.get('/api/webhook-url', (req, res) => {
+    const webhookUrl = process.env.WEBHOOK_URL;
+    if (!webhookUrl) {
+        console.error('WEBHOOK_URL is not defined in the environment variables.');
+        return res.status(500).json({ error: 'Webhook URL is not configured.' });
+    }
+    res.json({ webhookUrl });
+});
+
 // Endpoint to download selected icons as a ZIP file
 app.post("/api/download", async (req, res) => {
     const { coloredIcons } = req.body;
@@ -100,6 +125,19 @@ app.post("/api/download", async (req, res) => {
         res.status(500).send({ error: "Failed to process icons" });
     }
 });
+
+// Endpoint to handle image uploads
+app.post('/api/upload-image', upload.single('icon-image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+    res.json({ imageUrl });
+});
+
+// Serve uploaded images
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Start the server
 app.listen(PORT, () => {

@@ -18,7 +18,7 @@ header {
     text-align: center;
     margin: 20px 0;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1160px;
 }
 
 h1 {
@@ -317,32 +317,88 @@ footer {
     color: #7f8c8d;
 }
 
-#confirm-selection {
+.action-buttons {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+#download-selection,
+#reset-selection {
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
-    background-color: #3498db;
-    color: white;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
     border: none;
 }
 
-#confirm-selection:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+#download-selection {
+    background-color: #3498db;
+    color: white;
+    flex: 1;
 }
 
-#confirm-selection:active {
+#download-selection:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(52, 152, 219, 0.4);
+}
+
+#download-selection:active {
     transform: translateY(1px);
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+    box-shadow: 0 3px 5px rgba(52, 152, 219, 0.4);
+}
+
+/* Reset button */
+/* Reset button - now a square */
+#reset-selection {
+    background-color: #e74c3c;
+    color: white;
+    width: 48px; /* Fixed square width */
+    height: 48px; /* Fixed square height */
+    padding: 0; /* Remove padding to ensure square shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* Make the reset icon larger */
+}
+
+#reset-selection:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+#reset-selection:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 5px rgba(231, 76, 60, 0.4);
+}
+
+/* Icon request link */
+#request-icon {
+    display: block;
+    text-align: center;
+    /* padding: 10px 0; */
+    color: #3498db;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#request-icon:hover {
+    color: #2ecc71;
+    transform: translateY(-2px);
+    text-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+}
+
+#request-icon:active {
+    transform: translateY(1px);
 }
 
 /* Loading indicator */
