@@ -56,7 +56,7 @@ const deleteOldFiles = (directory, maxAgeMs) => {
         });
     }, maxAgeMs);
 };
-deleteOldFiles(uploadsDir, 86400000);
+deleteOldFiles(uploadsDir, 86400000); // 24 hours in milliseconds
 
 // Block mobile users
 app.use((req, res, next) => {
@@ -66,10 +66,36 @@ app.use((req, res, next) => {
     if (isMobile) {
         return res.status(403).send(`
             <html>
-                <head><title>Access Denied</title></head>
+                <head>
+                    <title>Access Denied</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            background-color: #f5f5f5;
+                            color: #333;
+                        }
+                        h1 {
+                            font-size: 2rem;
+                            color: #e74c3c;
+                        }
+                        p {
+                            font-size: 1rem;
+                            margin-top: 10px;
+                        }
+                    </style>
+                </head>
                 <body>
                     <h1>Access Denied</h1>
-                    <p>This site is designed for desktop devices only.</p>
+                    <p>This site is designed for desktop devices only. Please access it from a desktop for the best experience.</p>
                 </body>
             </html>
         `);
@@ -140,7 +166,7 @@ async function sendToDiscordWebhook(payload) {
         const errorText = await response.text();
         throw new Error(`Discord webhook error: ${response.status} ${errorText}`);
     }
-    
+
     return response;
 }
 
@@ -164,7 +190,7 @@ app.post('/api/submit-request', (req, res, next) => {
 
         // Create image URL
         const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-        
+
         // Prepare the Discord webhook payload
         const payload = {
             username: "Icon Request",
@@ -184,7 +210,7 @@ app.post('/api/submit-request', (req, res, next) => {
 
         // Forward the request to Discord
         await sendToDiscordWebhook(payload);
-        
+
         // Respond to the client
         res.status(200).json({ success: true, message: 'Request submitted successfully' });
     } catch (error) {
@@ -193,20 +219,6 @@ app.post('/api/submit-request', (req, res, next) => {
     }
 });
 
-
-
-// We no longer need to expose the webhook URL to the frontend
-// You can remove or comment out this endpoint:
-/*
-app.get('/api/webhook-url', (req, res) => {
-    const webhookUrl = process.env.WEBHOOK_URL;
-    if (!webhookUrl) {
-        console.error('WEBHOOK_URL not defined.');
-        return res.status(500).json({ error: 'Webhook URL not configured.' });
-    }
-    res.json({ webhookUrl });
-});
-*/
 
 // Upload icon image with 1-hour cooldown
 app.post('/api/upload-image', (req, res, next) => {
