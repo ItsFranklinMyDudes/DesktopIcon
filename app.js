@@ -23,6 +23,12 @@ let pickerPos = { x: 0, y: 0 }; // Position in the color gradient
 let isPickingColor = false;
 let isAdjustingHue = false;
 
+// Pagination variables
+let currentPage = 1;
+let iconsPerPage = 75;
+let totalIcons = 0;
+let allIcons = [];
+
 // Initialize the color picker with default red
 initColorPicker();
 
@@ -314,18 +320,17 @@ function hslToRgb(h, s, l) {
 }
 
 // Fetch icons from the server
-async function fetchIcons(filter = "") {
+async function fetchIcons() {
     try {
         const response = await fetch("/api/icons");
         const icons = await response.json();
-        return icons.filter(icon =>
-            icon.name.toLowerCase().includes(filter.toLowerCase())
-        );
+        return icons;
     } catch (error) {
         console.error("Failed to fetch icons:", error);
         return [];
     }
 }
+
 
 // Create a single reusable canvas for recoloring
 const canvas = document.createElement("canvas");
@@ -346,53 +351,188 @@ function recolorCanvas(canvas, img, color) {
     ctx.globalCompositeOperation = "source-over"; // reset mode
 }
 
-// Load icons into the container
-async function loadIcons(filter = "") {
-    const icons = await fetchIcons(filter);
-    iconContainer.innerHTML = "";
+function filterAndPaginateIcons(icons, filter = "", page = 1) {
+    const filteredIcons = icons.filter(icon =>
+        icon.name.toLowerCase().includes(filter.toLowerCase())
+    );
     
-    icons.forEach(icon => {
-        const canvas = document.createElement("canvas");
-        canvas.className = "icon";
-        canvas.dataset.name = icon.name;
-        canvas.dataset.src = icon.src;
+    totalIcons = filteredIcons.length;
+    const totalPages = Math.ceil(totalIcons / iconsPerPage);
+    
+    // Make sure current page is valid
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+    currentPage = page;
+    
+    // Get icons for the current page
+    const startIndex = (page - 1) * iconsPerPage;
+    const endIndex = startIndex + iconsPerPage;
+    const pagedIcons = filteredIcons.slice(startIndex, endIndex);
+    
+    // Update pagination controls
+    updatePaginationControls(totalPages);
+    
+    return pagedIcons;
+}
+
+// Create pagination controls function
+function updatePaginationControls(totalPages) {
+    const paginationContainer = document.getElementById("pagination-container");
+    paginationContainer.innerHTML = "";
+    
+    // Don't show pagination if fewer than iconsPerPage
+    if (totalIcons <= iconsPerPage) return;
+    
+    // Create previous button
+    const prevBtn = document.createElement("button");
+    prevBtn.innerHTML = "&laquo;";
+    prevBtn.classList.add("pagination-btn");
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener("click", () => loadIcons(searchBar.value, currentPage - 1));
+    paginationContainer.appendChild(prevBtn);
+    
+    // Calculate which page buttons to show
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    // Adjust if we're at the end
+    if (endPage === totalPages) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    // Add first page button if not starting from page 1
+    if (startPage > 1) {
+        const firstBtn = document.createElement("button");
+        firstBtn.textContent = "1";
+        firstBtn.classList.add("pagination-btn");
+        firstBtn.addEventListener("click", () => loadIcons(searchBar.value, 1));
+        paginationContainer.appendChild(firstBtn);
         
-        // Add the selected class if this icon is in the selectedIcons array
-        if (selectedIcons.includes(icon.name)) {
-            canvas.classList.add("selected");
+        if (startPage > 2) {
+            const ellipsis = document.createElement("span");
+            ellipsis.textContent = "...";
+            ellipsis.classList.add("pagination-ellipsis");
+            paginationContainer.appendChild(ellipsis);
         }
+    }
+    
+    // Add page buttons
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.textContent = i;
+        pageBtn.classList.add("pagination-btn");
+        if (i === currentPage) {
+            pageBtn.classList.add("active");
+        }
+        pageBtn.addEventListener("click", () => loadIcons(searchBar.value, i));
+        paginationContainer.appendChild(pageBtn);
+    }
+    
+    // Add last page button if not ending at last page
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            const ellipsis = document.createElement("span");
+            ellipsis.textContent = "...";
+            ellipsis.classList.add("pagination-ellipsis");
+            paginationContainer.appendChild(ellipsis);
+        }
+        
+        const lastBtn = document.createElement("button");
+        lastBtn.textContent = totalPages;
+        lastBtn.classList.add("pagination-btn");
+        lastBtn.addEventListener("click", () => loadIcons(searchBar.value, totalPages));
+        paginationContainer.appendChild(lastBtn);
+    }
+    
+    // Create next button
+    const nextBtn = document.createElement("button");
+    nextBtn.innerHTML = "&raquo;";
+    nextBtn.classList.add("pagination-btn");
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener("click", () => loadIcons(searchBar.value, currentPage + 1));
+    paginationContainer.appendChild(nextBtn);
+    
+    // Show page counter
+    const pageCounter = document.createElement("div");
+    pageCounter.classList.add("page-counter");
+    pageCounter.textContent = `Page ${currentPage} of ${totalPages}`;
+    paginationContainer.appendChild(pageCounter);
+}
 
-        const ctx = canvas.getContext("2d");
 
-        const img = new Image();
-        img.src = icon.src;
-        img.onload = () => {
-            canvas.width = img.width;
-            canvas.height = img.height;
+// Load icons into the container
+async function loadIcons(filter = "", page = 1) {
+    // Show loading spinner
+    const loadingOverlay = document.querySelector(".loading-overlay");
+    loadingOverlay.classList.add("active");
+    
+    try {
+        // Fetch all icons once if not already fetched
+        if (allIcons.length === 0) {
+            allIcons = await fetchIcons();
+        }
+        
+        // Filter and paginate
+        const pagedIcons = filterAndPaginateIcons(allIcons, filter, page);
+        iconContainer.innerHTML = "";
+        
+        // Display the paginated icons
+        pagedIcons.forEach(icon => {
+            const canvas = document.createElement("canvas");
+            canvas.className = "icon";
+            canvas.dataset.name = icon.name;
+            canvas.dataset.src = icon.src;
+            
+            // Add the selected class if this icon is in the selectedIcons array
+            if (selectedIcons.includes(icon.name)) {
+                canvas.classList.add("selected");
+            }
 
-            // Store the image so we can redraw it later
-            canvas._originalImage = img;
+            const ctx = canvas.getContext("2d");
 
-            // Initial draw
-            recolorCanvas(canvas, img, currentColor);
-        };
+            const img = new Image();
+            img.src = icon.src;
+            img.onload = () => {
+                canvas.width = img.width;
+                canvas.height = img.height;
 
-        canvas.addEventListener("click", () => toggleSelection(icon.name));
-        canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+                // Store the image so we can redraw it later
+                canvas._originalImage = img;
 
-        const iconWrapper = document.createElement("div");
-        iconWrapper.style.position = "relative";
-        iconWrapper.style.display = "inline-block";
-        iconWrapper.style.textAlign = "center";
+                // Initial draw
+                recolorCanvas(canvas, img, currentColor);
+            };
 
-        const iconName = document.createElement("div");
-        iconName.className = "icon-name";
-        iconName.textContent = icon.name;
+            canvas.addEventListener("click", () => toggleSelection(icon.name));
+            canvas.addEventListener("contextmenu", (e) => e.preventDefault());
 
-        iconWrapper.appendChild(canvas);
-        iconWrapper.appendChild(iconName);
-        iconContainer.appendChild(iconWrapper);
-    });
+            const iconWrapper = document.createElement("div");
+            iconWrapper.style.position = "relative";
+            iconWrapper.style.display = "inline-block";
+            iconWrapper.style.textAlign = "center";
+
+            const iconName = document.createElement("div");
+            iconName.className = "icon-name";
+            iconName.textContent = icon.name;
+
+            iconWrapper.appendChild(canvas);
+            iconWrapper.appendChild(iconName);
+            iconContainer.appendChild(iconWrapper);
+        });
+        
+        // Show "No icons found" message if filtered to zero
+        if (pagedIcons.length === 0) {
+            const noIconsMsg = document.createElement("div");
+            noIconsMsg.classList.add("no-icons-message");
+            noIconsMsg.textContent = "No icons found matching your search.";
+            iconContainer.appendChild(noIconsMsg);
+        }
+    } catch (error) {
+        console.error("Error loading icons:", error);
+    } finally {
+        // Hide loading spinner
+        loadingOverlay.classList.remove("active");
+    }
 }
 
 // Toggle icon selection
@@ -417,9 +557,9 @@ function updateSelectionUI() {
     });
 }
 
-// Handle search input
+// Update the search bar event listener to reset to page 1
 searchBar.addEventListener("input", (e) => {
-    loadIcons(e.target.value);
+    loadIcons(e.target.value, 1);
 });
 
 // Update icon colors with the selected color

@@ -16,6 +16,7 @@
             <section id="icon-container">
                 <!-- Icons will be loaded here dynamically -->
             </section>
+            <section id="pagination-container" class="pagination"></section>
         </main>
         
         <aside>
@@ -83,34 +84,5 @@
     <input type="hidden" id="color-picker" value="#FF0000">
     
     <script src="app.js"></script>
-    <script>
-        const API_BASE = "/api";
-
-        async function fetchIcons(filter = "") {
-            try {
-                const response = await fetch(`${API_BASE}/icons`);
-                const icons = await response.json();
-                return icons.filter(icon =>
-                    icon.name.toLowerCase().includes(filter.toLowerCase())
-                );
-            } catch (error) {
-                console.error("Failed to fetch icons:", error);
-                return [];
-            }
-        }
-
-        async function downloadIcons(coloredIcons) {
-            try {
-                const response = await fetch(`${API_BASE}/download`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ coloredIcons }),
-                });
-                return await response.json();
-            } catch (error) {
-                console.error("Failed to download icons:", error);
-            }
-        }
-    </script>
 </body>
 </html>

@@ -392,7 +392,7 @@ footer {
 }
 
 #request-icon:hover {
-    color: #2ecc71;
+    color: #2e87c2;
     transform: translateY(-2px);
     text-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
 }
@@ -432,61 +432,76 @@ footer {
     animation: spin 1s linear infinite;
 }
 
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.pagination-btn {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: none;
+    border-radius: 8px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-btn:hover {
+    background-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+}
+
+.pagination-btn.active {
+    background-color: #3498db;
+    font-weight: bold;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(52, 152, 219, 0.4);
+}
+
+.pagination-btn:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
+.pagination-ellipsis {
+    color: #ecf0f1;
+    font-size: 18px;
+    margin: 0 5px;
+    user-select: none;
+}
+
+.page-counter {
+    color: #bdc3c7;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.no-icons-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 18px;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .content-container {
-        flex-direction: column;
-    }
-    
-    aside {
-        position: static;
-        width: 100%;
-        max-width: none;
-    }
-    
-    .sidebar-section {
-        max-width: 450px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 768px) {
-    header, footer {
-        width: 95%;
-    }
-    
-    .content-container {
-        width: 95%;
-    }
-    
-    #icon-container {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 15px;
-    }
-    
-    .icon {
-        width: 80px;
-        height: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    #icon-container {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        gap: 10px;
-    }
-    
-    .icon {
-        width: 70px;
-        height: 70px;
-    }
 }
