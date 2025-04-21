@@ -13,6 +13,10 @@ const gInput = document.getElementById("g-value");
 const bInput = document.getElementById("b-value");
 const colorCursor = document.querySelector(".color-cursor");
 const hueCursor = document.querySelector(".hue-cursor");
+const hexInput = document.getElementById("hex-value");
+const hexInputContainer = document.querySelector('.hex-input-container');
+
+let hexInputActive = false;
 
 let selectedIcons = [];
 let currentColor = "#FF0000"; // Default red
@@ -61,7 +65,29 @@ function initColorPicker() {
 
     // Set initial color
     updateColorFromHsv(currentHue, 1, 1);
+
+    // Set initial hex value (new code)
+    hexInput.value = currentColor.substring(1);
+
+    const originalInitColorPicker = initColorPicker;
+    initColorPicker = function () {
+        originalInitColorPicker();
+        reorganizeColorPicker();
+    };
 }
+
+hexInputContainer.addEventListener('click', function (e) {
+    // If we didn't click directly on the input, focus it
+    if (e.target !== hexInput) {
+        hexInput.focus();
+    }
+
+    // First click - just select all
+    if (!hexInputActive) {
+        hexInput.select();
+        hexInputActive = true;
+    }
+});
 
 function startPickingColor(e) {
     isPickingColor = true;
@@ -82,13 +108,37 @@ function pickColor(e) {
     colorCursor.style.left = `${x * 100}%`;
     colorCursor.style.top = `${y * 100}%`;
 
-    // In our mapping:
     // x = saturation (0 at left, 1 at right)
     // y = value/brightness (1 at top, 0 at bottom)
     const s = x;
     const v = 1 - y;
 
     updateColorFromHsv(currentHue, s, v);
+}
+
+function updateColorCursors(h, s, v) {
+    // Keep hue between 0-359
+    h = h % 360;
+    if (h < 0) h += 360;
+    if (h === 360) h = 359;
+
+    // Calculate position percentage while preventing 100% exactly
+    const huePosition = Math.min((h / 360), 0.9999);
+
+    // Update hue slider position
+    hueCursor.style.left = `${huePosition * 100}%`;
+
+    // Update color picker position
+    colorCursor.style.left = `${s * 100}%`;
+    colorCursor.style.top = `${(1 - v) * 100}%`;
+
+    // Save the picker position
+    pickerPos = { x: s, y: (1 - v) };
+}
+
+function componentToHex(c) {
+    const hex = Math.max(0, Math.min(255, Math.round(c))).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
 }
 
 function stopPickingColor() {
@@ -104,12 +154,20 @@ function adjustHue(e) {
     if (!isAdjustingHue) return;
 
     const rect = colorSlider.getBoundingClientRect();
-    let x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    // Get the position within the slider
+    const position = e.clientX - rect.left;
+    // Calculate percentage (0 to 1)
+    let percentage = position / rect.width;
 
-    currentHue = Math.round(x * 360);
+    // Ensure the cursor stays at the edges
+    percentage = Math.max(0, Math.min(1, percentage));
 
-    // Update slider cursor position
-    hueCursor.style.left = `${x * 100}%`;
+    // Set the hue (0-359.99)
+    // Avoid using 360 exactly to prevent wrap-around issues
+    currentHue = percentage < 1 ? Math.round(percentage * 360) : 359;
+
+    // Update slider cursor position - keep it where the mouse actually is
+    hueCursor.style.left = `${percentage * 100}%`;
 
     // Update the gradient with the new hue
     updateColorGradient(currentHue);
@@ -123,18 +181,16 @@ function stopAdjustingHue() {
 }
 
 function updateColorGradient(hue) {
-    // Create a gradient that:
-    // - Has pure color of current hue at top right
-    // - Has white at top left
-    // - Has black at bottom
-    const hueColor = hslToRgb(hue / 360, 1, 0.5);
+    // Ensure the gradient works with any hue value
+    const normalizedHue = hue % 360;
+
+    // Create the base hue color for the gradient
+    const hueColor = hslToRgb(normalizedHue / 360, 1, 0.5);
     const hueRgb = `rgb(${hueColor.r}, ${hueColor.g}, ${hueColor.b})`;
 
-    colorGradient.style.background = `
-        linear-gradient(to right, white, ${hueRgb}),
-        linear-gradient(to bottom, rgba(0,0,0,0), black)
-    `;
-    colorGradient.style.backgroundBlendMode = "multiply";
+    // Create the gradient overlay
+    colorGradient.style.background = `linear-gradient(to top, #000, transparent), linear-gradient(to right, #fff, ${hueRgb})`;
+    colorGradient.style.backgroundBlendMode = "normal";
 }
 
 function updateFromRgb() {
@@ -146,12 +202,17 @@ function updateFromRgb() {
 }
 
 function updateColorFromHsv(h, s, v) {
+    // Keep hue between 0-359 (not 360, to prevent wrap-around)
+    h = h % 360;
+    if (h < 0) h += 360;
+    if (h === 360) h = 359; // Prevent wrap-around at the boundary
+
     const rgb = hsvToRgb(h, s, v);
     updateColorFromRgb(rgb.r, rgb.g, rgb.b);
 }
 
 function updateColorFromRgb(r, g, b) {
-    // Clamp values
+    // Existing code remains...
     r = Math.max(0, Math.min(255, Math.round(r)));
     g = Math.max(0, Math.min(255, Math.round(g)));
     b = Math.max(0, Math.min(255, Math.round(b)));
@@ -165,12 +226,16 @@ function updateColorFromRgb(r, g, b) {
     const hex = rgbToHex(r, g, b);
     currentColor = hex;
 
+    // Update hex input (new code)
+    hexInput.value = hex.substring(1); // Remove the # character
+
     // Update color preview
     colorPreview.style.backgroundColor = hex;
 
     // Update the hidden color picker for compatibility
     colorPicker.value = hex;
 
+    // Remaining code stays the same...
     // Convert to HSV and update picker position if needed
     const hsv = rgbToHsv(r, g, b);
 
@@ -180,8 +245,9 @@ function updateColorFromRgb(r, g, b) {
             currentHue = hsv.h;
             updateColorGradient(currentHue);
 
-            // Update hue slider position
-            hueCursor.style.left = `${(currentHue / 360) * 100}%`;
+            // Update hue slider position - avoid exact 360° position
+            const huePosition = Math.min((currentHue / 360), 0.9999);
+            hueCursor.style.left = `${huePosition * 100}%`;
         }
 
         // Update picker position if it's significantly different
@@ -210,6 +276,38 @@ function updateColorFromRgb(r, g, b) {
     updateIconColors(hex);
 }
 
+document.addEventListener('click', function (e) {
+    if (!hexInputContainer.contains(e.target)) {
+        hexInputActive = false;
+    }
+});
+
+hexInput.addEventListener('focus', function () {
+    if (!hexInputActive) {
+        this.select();
+        hexInputActive = true;
+    }
+});
+
+hexInput.addEventListener("input", function () {
+    // Remove any non-hex characters and the # if present
+    let hexValue = this.value.replace(/[^0-9A-Fa-f]/g, "");
+
+    // If we have a valid hex color
+    if (hexValue.length === 6) {
+        updateColorFromHex("#" + hexValue);
+    } else if (hexValue.length === 3) {
+        // Support 3-digit hex
+        const r = hexValue[0];
+        const g = hexValue[1];
+        const b = hexValue[2];
+        updateColorFromHex("#" + r + r + g + g + b + b);
+    }
+
+    // Update the input value after filtering
+    this.value = hexValue;
+});
+
 // Set up color option selection
 colorOptions.forEach(option => {
     option.addEventListener("click", function () {
@@ -219,17 +317,45 @@ colorOptions.forEach(option => {
     });
 });
 
+function updateColorFromHex(hex) {
+    const rgb = hexToRgb(hex);
+    if (rgb) {
+        // Convert to HSV to update the gradient pickers properly
+        const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+        
+        // Update hue first to set the proper gradient
+        currentHue = hsv.h;
+        updateColorGradient(currentHue);
+        
+        // Update the cursors BEFORE updating color from RGB
+        updateColorCursors(hsv.h, hsv.s, hsv.v);
+        
+        // Then update color from RGB
+        updateColorFromRgb(rgb.r, rgb.g, rgb.b);
+    }
+}
+
+
+
 // Color conversion utilities
 function rgbToHex(r, g, b) {
-    return "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1).toUpperCase();
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
 function hexToRgb(hex) {
+    // Remove # if present
     hex = hex.replace(/^#/, '');
+
+    // Handle both 3 and 6 digit hex codes
     if (hex.length === 3) {
         hex = hex.split('').map(char => char + char).join('');
     }
 
+    if (hex.length !== 6) {
+        return null;
+    }
+
+    // Parse the hex values
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
@@ -259,6 +385,10 @@ function rgbToHsv(r, g, b) {
             case b: h = (r - g) / d + 4; break;
         }
         h *= 60;
+
+        // Ensure h is within 0-360 range
+        h = h % 360;
+        if (h < 0) h += 360;
     }
 
     return { h, s, v };
@@ -355,23 +485,23 @@ function filterAndPaginateIcons(icons, filter = "", page = 1) {
     const filteredIcons = icons.filter(icon =>
         icon.name.toLowerCase().includes(filter.toLowerCase())
     );
-    
+
     totalIcons = filteredIcons.length;
     const totalPages = Math.ceil(totalIcons / iconsPerPage);
-    
+
     // Make sure current page is valid
     if (page < 1) page = 1;
     if (page > totalPages) page = totalPages;
     currentPage = page;
-    
+
     // Get icons for the current page
     const startIndex = (page - 1) * iconsPerPage;
     const endIndex = startIndex + iconsPerPage;
     const pagedIcons = filteredIcons.slice(startIndex, endIndex);
-    
+
     // Update pagination controls
     updatePaginationControls(totalPages);
-    
+
     return pagedIcons;
 }
 
@@ -379,10 +509,10 @@ function filterAndPaginateIcons(icons, filter = "", page = 1) {
 function updatePaginationControls(totalPages) {
     const paginationContainer = document.getElementById("pagination-container");
     paginationContainer.innerHTML = "";
-    
+
     // Don't show pagination if fewer than iconsPerPage
     if (totalIcons <= iconsPerPage) return;
-    
+
     // Create previous button
     const prevBtn = document.createElement("button");
     prevBtn.innerHTML = "&laquo;";
@@ -390,16 +520,16 @@ function updatePaginationControls(totalPages) {
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener("click", () => loadIcons(searchBar.value, currentPage - 1));
     paginationContainer.appendChild(prevBtn);
-    
+
     // Calculate which page buttons to show
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, startPage + 4);
-    
+
     // Adjust if we're at the end
     if (endPage === totalPages) {
         startPage = Math.max(1, endPage - 4);
     }
-    
+
     // Add first page button if not starting from page 1
     if (startPage > 1) {
         const firstBtn = document.createElement("button");
@@ -407,7 +537,7 @@ function updatePaginationControls(totalPages) {
         firstBtn.classList.add("pagination-btn");
         firstBtn.addEventListener("click", () => loadIcons(searchBar.value, 1));
         paginationContainer.appendChild(firstBtn);
-        
+
         if (startPage > 2) {
             const ellipsis = document.createElement("span");
             ellipsis.textContent = "...";
@@ -415,7 +545,7 @@ function updatePaginationControls(totalPages) {
             paginationContainer.appendChild(ellipsis);
         }
     }
-    
+
     // Add page buttons
     for (let i = startPage; i <= endPage; i++) {
         const pageBtn = document.createElement("button");
@@ -427,7 +557,7 @@ function updatePaginationControls(totalPages) {
         pageBtn.addEventListener("click", () => loadIcons(searchBar.value, i));
         paginationContainer.appendChild(pageBtn);
     }
-    
+
     // Add last page button if not ending at last page
     if (endPage < totalPages) {
         if (endPage < totalPages - 1) {
@@ -436,14 +566,14 @@ function updatePaginationControls(totalPages) {
             ellipsis.classList.add("pagination-ellipsis");
             paginationContainer.appendChild(ellipsis);
         }
-        
+
         const lastBtn = document.createElement("button");
         lastBtn.textContent = totalPages;
         lastBtn.classList.add("pagination-btn");
         lastBtn.addEventListener("click", () => loadIcons(searchBar.value, totalPages));
         paginationContainer.appendChild(lastBtn);
     }
-    
+
     // Create next button
     const nextBtn = document.createElement("button");
     nextBtn.innerHTML = "&raquo;";
@@ -451,7 +581,7 @@ function updatePaginationControls(totalPages) {
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.addEventListener("click", () => loadIcons(searchBar.value, currentPage + 1));
     paginationContainer.appendChild(nextBtn);
-    
+
     // Show page counter
     const pageCounter = document.createElement("div");
     pageCounter.classList.add("page-counter");
@@ -465,24 +595,24 @@ async function loadIcons(filter = "", page = 1) {
     // Show loading spinner
     const loadingOverlay = document.querySelector(".loading-overlay");
     loadingOverlay.classList.add("active");
-    
+
     try {
         // Fetch all icons once if not already fetched
         if (allIcons.length === 0) {
             allIcons = await fetchIcons();
         }
-        
+
         // Filter and paginate
         const pagedIcons = filterAndPaginateIcons(allIcons, filter, page);
         iconContainer.innerHTML = "";
-        
+
         // Display the paginated icons
         pagedIcons.forEach(icon => {
             const canvas = document.createElement("canvas");
             canvas.className = "icon";
             canvas.dataset.name = icon.name;
             canvas.dataset.src = icon.src;
-            
+
             // Add the selected class if this icon is in the selectedIcons array
             if (selectedIcons.includes(icon.name)) {
                 canvas.classList.add("selected");
@@ -519,7 +649,7 @@ async function loadIcons(filter = "", page = 1) {
             iconWrapper.appendChild(iconName);
             iconContainer.appendChild(iconWrapper);
         });
-        
+
         // Show "No icons found" message if filtered to zero
         if (pagedIcons.length === 0) {
             const noIconsMsg = document.createElement("div");
@@ -654,6 +784,55 @@ document.getElementById("reset-selection").addEventListener("click", () => {
     selectedIcons = [];
     updateSelectionUI();
 });
+
+function reorganizeColorPicker() {
+    // Find the containers we need to modify
+    const gradientContainer = document.querySelector('.gradient-picker-container');
+    const colorPreview = document.getElementById('color-preview');
+    const colorSlider = document.getElementById('color-slider');
+
+    // Remove the color preview from its current position
+    colorPreview.remove();
+
+    // Create a new container for the preview and slider
+    const previewSliderContainer = document.createElement('div');
+    previewSliderContainer.className = 'preview-slider-container';
+    previewSliderContainer.style.display = 'flex';
+    previewSliderContainer.style.alignItems = 'center';
+    previewSliderContainer.style.gap = '10px';
+    previewSliderContainer.style.width = '100%';
+    // previewSliderContainer.style.marginBottom = '20px';
+
+    // Style the color preview
+    // colorPreview.style.width = '60px';
+    // colorPreview.style.height = '60px';
+    // colorPreview.style.minWidth = '60px';
+    // colorPreview.style.borderRadius = '50%';
+    // colorPreview.style.boxShadow = '0 0 12px rgba(0, 0, 0, 0.5)';
+    // colorPreview.style.marginRight = '10px';
+
+    // Add them to the new container
+    previewSliderContainer.appendChild(colorPreview);
+    previewSliderContainer.appendChild(colorSlider);
+
+    // Place the new container at the top, right after the gradient
+    gradientContainer.insertBefore(previewSliderContainer, document.getElementById('color-gradient').nextSibling);
+
+    // Style the hex input container to be more clickable
+    hexInputContainer.style.cursor = 'pointer';
+    hexInputContainer.style.transition = 'background-color 0.2s ease';
+
+    // Add hover effect to the hex input container
+    hexInputContainer.addEventListener('mouseenter', function () {
+        this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    });
+
+    hexInputContainer.addEventListener('mouseleave', function () {
+        this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', reorganizeColorPicker);
 
 // Initial load of icons
 loadIcons();
