@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desktop Icon Selector</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Open Graph Meta Tags for Discord Embed -->
+    <meta property="og:title" content="Desktop Icon Selector" />
+    <meta property="og:description" content="Choose and Select your own Icons. Make the Desktop your own!" />
+    <meta property="og:image" content="https://i.imgur.com/YYBp0qu.png" />
+    <meta property="og:url" content="https://desktopicon.net" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Desktop Icon Selector" />
+    <meta property="og:color" content="#3498db" />
 </head>
+
 <body>
     <header>
         <h1>Desktop Icon Selector</h1>
     </header>
-    
+
     <div class="content-container">
         <main>
             <section id="icon-container">
@@ -18,11 +33,11 @@
             </section>
             <section id="pagination-container" class="pagination"></section>
         </main>
-        
+
         <aside>
             <div class="sidebar-section">
                 <input type="text" id="search-bar" placeholder="Search for icons...">
-                
+
                 <div class="gradient-picker-container">
                     <div id="color-gradient">
                         <div class="color-cursor"></div>
@@ -30,9 +45,9 @@
                     <div id="color-slider">
                         <div class="hue-cursor"></div>
                     </div>
-                    
+
                     <div id="color-preview"></div>
-                    
+
                     <div class="rgb-inputs">
                         <div class="rgb-input">
                             <label for="r-value">R</label>
@@ -47,13 +62,13 @@
                             <input type="number" id="b-value" min="0" max="255" value="0">
                         </div>
                     </div>
-                    
+
                     <div class="hex-input-container">
                         <label for="hex-value">#</label>
                         <input type="text" id="hex-value" maxlength="6" placeholder="FF0000">
                     </div>
                 </div>
-                
+
                 <div id="color-picker-custom">
                     <div class="color-option selected" data-color="#FF0000" style="background-color: #FF0000;"></div>
                     <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
@@ -64,7 +79,7 @@
                     <div class="color-option" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
                     <div class="color-option" data-color="#000000" style="background-color: #000000;"></div>
                 </div>
-                
+
                 <div class="button-container">
                     <div class="action-buttons">
                         <button id="download-selection">Download Selection</button>
@@ -75,19 +90,20 @@
             </div>
         </aside>
     </div>
-    
+
     <!-- <footer>
         <p>&copy; 2025 Desktop Icon Selector</p>
     </footer> -->
-    
+
     <!-- Loading spinner overlay -->
     <div class="loading-overlay">
         <div class="spinner"></div>
     </div>
-    
+
     <!-- Hidden original color picker for compatibility -->
     <input type="hidden" id="color-picker" value="#FF0000">
-    
+
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Icon Request | Desktop Icon Selector</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="requestStyle.css">
 </head>
@@ -21,7 +25,7 @@
                 <div id="cooldown-notification" class="cooldown-notification hidden">
                     <p>You're on cooldown. Please try again in <span id="cooldown-time">60</span> minute(s).</p>
                 </div>
-                
+
                 <!-- Success notification -->
                 <div id="success-notification" class="success-notification hidden">
                     <p>Your icon request has been submitted successfully!</p>
@@ -140,7 +144,7 @@
             try {
                 // Create FormData from the form
                 const formData = new FormData(form);
-                
+
                 // Send to your server endpoint
                 const response = await fetch('/api/submit-request', {
                     method: 'POST',
@@ -149,28 +153,28 @@
 
                 if (!response.ok) {
                     const data = await response.json();
-                    
+
                     // Handle cooldown response
                     if (response.status === 429) {
                         const minutesRemaining = parseInt(data.error.match(/\d+/)[0]);
                         const cooldownUntil = Date.now() + (minutesRemaining * 60 * 1000);
-                        
+
                         // Store cooldown in localStorage
                         localStorage.setItem('iconRequestCooldown', cooldownUntil);
-                        
+
                         cooldownTimeSpan.textContent = minutesRemaining;
                         cooldownNotification.classList.remove('hidden');
                         form.classList.add('hidden');
                         return;
                     }
-                    
+
                     throw new Error(data.error || 'Request failed');
                 }
 
                 // Show success message
                 successNotification.classList.remove('hidden');
                 form.classList.add('hidden');
-                
+
                 // Set cooldown in localStorage (1 hour)
                 const oneHourFromNow = Date.now() + (60 * 60 * 1000);
                 localStorage.setItem('iconRequestCooldown', oneHourFromNow);
