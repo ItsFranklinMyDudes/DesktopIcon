@@ -125,7 +125,7 @@ app.get("/api/icons", (req, res) => {
         if (err) return res.status(500).json({ error: "Failed to load icons" });
 
         const icons = files
-            .filter(file => /\.(ico|png)$/i.test(file))
+            .filter(file => /\.(ico)$/i.test(file))
             .map(file => ({
                 name: path.parse(file).name,
                 src: useCDN ? `${cdnBaseUrl}/${file}` : `/icons/${file}`
