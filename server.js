@@ -132,6 +132,8 @@ app.get("/api/icons", (req, res) => {
             }));
         
         res.json(icons);
+
+        // console.log(JSON.stringify(icons, null, 2));
     });
 });
 
