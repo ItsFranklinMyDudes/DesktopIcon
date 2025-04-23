@@ -7,6 +7,7 @@ const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const useCDN = process.env.USE_CDN === 'true'; // Use CDN if set to true in .env
 
 // Cooldown settings
 const COOLDOWN_MS = 60 * 60 * 1000; // 1 hour
@@ -104,6 +105,13 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/icons', express.static(path.join(__dirname, 'icons'), {
+    setHeaders: (res) => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Cache-Control', 'public, max-age=31536000');
+    }
+}));
+
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 app.use(express.json({ limit: '50mb' }));
@@ -111,12 +119,18 @@ app.use(express.json({ limit: '50mb' }));
 // List available icons
 app.get("/api/icons", (req, res) => {
     const iconsDir = path.join(__dirname, "icons");
+    const cdnBaseUrl = "https://cdn.desktopicon.net/icons";
+
     fs.readdir(iconsDir, (err, files) => {
         if (err) return res.status(500).json({ error: "Failed to load icons" });
 
         const icons = files
-            .filter(file => /\.(png|jpg|jpeg|svg|ico)$/i.test(file))
-            .map(file => ({ name: path.parse(file).name, src: `/icons/${file}` }));
+            .filter(file => /\.(ico|png)$/i.test(file))
+            .map(file => ({
+                name: path.parse(file).name,
+                src: useCDN ? `${cdnBaseUrl}/${file}` : `/icons/${file}`
+            }));
+        
         res.json(icons);
     });
 });
@@ -147,53 +161,43 @@ app.post("/api/download", async (req, res) => {
     }
 });
 
-// Add this code to server.js
-
-// Helper function to forward requests to Discord
-async function sendToDiscordWebhook(payload) {
-    const webhookUrl = process.env.WEBHOOK_URL;
-    if (!webhookUrl) {
-        throw new Error('Webhook URL not configured');
-    }
-
-    const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Discord webhook error: ${response.status} ${errorText}`);
-    }
-
-    return response;
-}
-
 // New endpoint that handles the request submission
 app.post('/api/submit-request', (req, res, next) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     const now = Date.now();
 
+    console.log(`[DEBUG] Incoming request from IP: ${ip} at ${new Date(now).toISOString()}`);
+
     if (cooldowns[ip] && now - cooldowns[ip] < COOLDOWN_MS) {
         const mins = Math.ceil((COOLDOWN_MS - (now - cooldowns[ip])) / 60000);
+        console.log(`[DEBUG] Cooldown active for IP: ${ip}. Remaining time: ${mins} minute(s).`);
         return res.status(429).json({ error: `You're on cooldown. Try again in ${mins} minute(s).` });
     }
 
     cooldowns[ip] = now;
+    console.log(`[DEBUG] Cooldown set for IP: ${ip}.`);
     next();
 }, upload.single('icon-image'), async (req, res) => {
     try {
         if (!req.file) {
+            console.error(`[ERROR] No file uploaded for IP: ${req.headers['x-forwarded-for'] || req.socket.remoteAddress}`);
             return res.status(400).json({ error: 'No file uploaded' });
         }
 
         // Create image URL
         const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+        console.log(`[DEBUG] File uploaded successfully. Image URL: ${imageUrl}`);
+
+        const webhookUrl = process.env.WEBHOOK_URL;
+        if (!webhookUrl) {
+            console.error(`[ERROR] Webhook URL not configured.`);
+            throw new Error('Webhook URL not configured');
+        }
 
         // Prepare the Discord webhook payload
         const payload = {
             username: "Icon Request",
+            avatar_url: "https://i.imgur.com/yMDfzco.png",
             embeds: [
                 {
                     title: "New Icon Request",
@@ -208,37 +212,26 @@ app.post('/api/submit-request', (req, res, next) => {
             ]
         };
 
-        // Forward the request to Discord
-        await sendToDiscordWebhook(payload);
+        console.log(`[DEBUG] Sending payload to Discord webhook:`, payload);
 
-        // Respond to the client
+        const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`[ERROR] Discord webhook error: ${response.status} ${errorText}`);
+            throw new Error(`Discord webhook error: ${response.status} ${errorText}`);
+        }
+
+        console.log(`[DEBUG] Payload successfully sent to Discord webhook.`);
         res.status(200).json({ success: true, message: 'Request submitted successfully' });
     } catch (error) {
-        console.error('Error processing request:', error);
+        console.error(`[ERROR] Failed to process request:`, error);
         res.status(500).json({ error: 'Failed to process request' });
     }
-});
-
-
-// Upload icon image with 1-hour cooldown
-app.post('/api/upload-image', (req, res, next) => {
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const now = Date.now();
-
-    if (cooldowns[ip] && now - cooldowns[ip] < COOLDOWN_MS) {
-        const mins = Math.ceil((COOLDOWN_MS - (now - cooldowns[ip])) / 60000);
-        return res.status(429).json({ error: `You're on cooldown. Try again in ${mins} minute(s).` });
-    }
-
-    cooldowns[ip] = now;
-    next();
-}, upload.single('icon-image'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
-    }
-
-    const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-    res.json({ imageUrl });
 });
 
 // Serve uploaded images

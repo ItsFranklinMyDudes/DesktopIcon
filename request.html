@@ -22,7 +22,8 @@
 </head>
 
 <body>
-    <header>
+    <header style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <img src="Logo Drop Shadow.png" alt="Desktop Icon Selector Logo" width="50px">
         <h1>Request a New Icon</h1>
     </header>
 
@@ -88,14 +89,22 @@
         // Check for cooldown in localStorage
         function checkCooldown() {
             const cooldownUntil = localStorage.getItem('iconRequestCooldown');
+            const submitBtn = document.querySelector('.submit-btn');
+
             if (cooldownUntil && parseInt(cooldownUntil) > Date.now()) {
                 // Calculate minutes remaining
                 const minutesRemaining = Math.ceil((parseInt(cooldownUntil) - Date.now()) / 60000);
                 cooldownTimeSpan.textContent = minutesRemaining;
                 cooldownNotification.classList.remove('hidden');
                 form.classList.add('hidden');
+
+                // Disable the submit button
+                submitBtn.disabled = true;
                 return true;
             }
+
+            // Enable the submit button if no cooldown
+            submitBtn.disabled = false;
             return false;
         }
 
