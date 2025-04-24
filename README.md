@@ -9,7 +9,7 @@ Desktop Icon Selector is a web application that allows users to browse, customiz
 - Search for icons by name.
 - Select multiple icons and download them as a ZIP file.
 - Request new icons via a form with file upload support.
-- Responsive design for desktop devices.
+- Batch file to quickly change all icons on the desktop
 
 ## Technologies Used
 
@@ -33,22 +33,25 @@ Desktop Icon Selector is a web application that allows users to browse, customiz
    npm install
    ```
 
-3. Create a `.env` file in the root directory and configure the following variables:
+3. Remove example from `.env` file in the root directory and configure the following variables:
    ```
    PORT=3000
    USE_CDN=false
+   USE_TEST=false
    WEBHOOK_URL=<your_discord_webhook_url>
    ```
 
 4. Start the server:
    ```bash
-   npm start
+   node server.js 
    ```
-
+   or run `Start.bat`
+   
 5. Open your browser and navigate to:
    ```
-   http://localhost:3000
+   http://localhost:3000 
    ```
+   or whatever your port is
 
 ## Usage
 
@@ -69,54 +72,11 @@ Desktop Icon Selector is a web application that allows users to browse, customiz
 - Navigate to the "Request a New Icon" page.
 - Fill out the form, upload a reference image, and submit your request.
 
-## Folder Structure
-
-```
-DesktopIcon/
-├── uploads/               # Directory for uploaded files
-├── icons/                 # Directory for icon files
-├── public/                # Static assets (CSS, JS, images)
-├── .env                   # Environment variables
-├── server.js              # Backend server
-├── app.js                 # Frontend logic
-├── style.css              # Global styles
-├── requestStyle.css       # Styles for the request page
-├── README.md              # Documentation
-└── package.json           # Project metadata and dependencies
-```
-
-## Environment Variables
-
-| Variable      | Description                              | Default Value |
-|---------------|------------------------------------------|---------------|
-| `PORT`        | Port number for the server               | `3000`        |
-| `USE_CDN`     | Use CDN for serving icons                | `false`       |
-| `WEBHOOK_URL` | Discord webhook URL for icon requests    | N/A           |
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add feature-name"
-   ```
-4. Push to your fork:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
-
 ## License
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 ## Acknowledgments
 
-- Icons provided by the community.
-- Built with love using Node.js and Express.js.
+- Icons provided by the Developer.
+- Built with love using Node.js and Express.js, and AI for help :).
