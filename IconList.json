@@ -1,52 +1,878 @@
 [
-    { "name": "Ableton Live", "src": "./icons/Ableton Live.ico" },
-    { "name": "Adobe After Effects", "src": "./icons/Adobe After Effects.ico" },
-    { "name": "Adobe Illustrator", "src": "./icons/Adobe Illustrator.ico" },
-    { "name": "Adobe Lightroom", "src": "./icons/Adobe Lightroom.ico" },
-    { "name": "Adobe Photoshop", "src": "./icons/Adobe Photoshop.ico" },
-    { "name": "Adobe Premiere Pro", "src": "./icons/Adobe Premiere Pro.ico" },
-    { "name": "Affinity", "src": "./icons/Affinity.ico" },
-    { "name": "Among Us", "src": "./icons/Among Us.ico" },
-    { "name": "Android Studio", "src": "./icons/Android Studio.ico" },
-    { "name": "Apex Legends", "src": "./icons/Apex Legends.ico" },
-    { "name": "Apple Music", "src": "./icons/Apple Music.ico"},
-    { "name": "Arc Browser", "src": "./icons/Arc Browser.ico"},
-    { "name": "Aseprite", "src": "./icons/Aseprite.ico" },
-    { "name": "Assassin's Creed", "src": "./icons/Assassin's Creed.ico" },
-    { "name": "Assetto Corsa", "src": "./icons/Assetto Corsa.ico" },
-    { "name": "ATLauncher", "src": "./icons/ATLauncher.ico" },
-    { "name": "Atom IDE", "src": "./icons/Atom IDE.ico" },
-    { "name": "Audacity", "src": "./icons/Audacity.ico" },
-    { "name": "Banana Shooter", "src": "./icons/Banana Shooter.ico" },
-    { "name": "Battle.net", "src": "./icons/Battle.net.ico" },
-    { "name": "Blender", "src": "./icons/Blender.ico" },
-    { "name": "BlockBench", "src": "./icons/!Test.pngBlockBench.ico" },
-    { "name": "Borderless Minecraft", "src": "./icons/Borderless Minecraft.ico" },
-    { "name": "Brackets IDE", "src": "./icons/Brackets IDE.ico" },
-    { "name": "Brave", "src": "./icons/Brave.ico" },
-    { "name": "Call of Duty", "src": "./icons/Call of Duty.ico"},
-    { "name": "Camo Studio", "src": "./icons/Camo Studio.ico"},
-    { "name": "Canva", "src": "./icons/Canva.ico" },
-    { "name": "Celesta", "src": "./icons/Celesta.ico"},
-    { "name": "Cheat Engine", "src": "./icons/Cheat Engine.ico"},
-    { "name": "Chrome", "src": "./icons/Chrome.ico"},
-    { "name": "Cities Skylines", "src": "./icons/Cities Skylines.ico"},
-    { "name": "Command Prompt", "src": "./icons/Command Prompt.ico"},
-    { "name": "Cookie Clicker", "src": "./icons/Cookie Clicker.ico"},
-    { "name": "Counter Strike", "src": "./icons/Counter Strike.ico"},
-    { "name": "Crab Game", "src": "./icons/Crab Game.ico"},
-    { "name": "Crusader Kings", "src": "./icons/Crusader Kings.ico"},
-    { "name": "Curse Forge", "src": "./icons/Curse Forge.ico"},
-    { "name": "Dark Souls", "src": "./icons/Dark Souls.ico"},
-    { "name": "DaVinci Resolve", "src": "./icons/DaVinci Resolve.ico"},
-    { "name": "Dead Cells", "src": "./icons/Dead Cells.ico"},
-    { "name": "Destiny", "src": "./icons/Destiny.ico"},
-    { "name": "Discord Canary", "src": "./icons/Discord Canary.ico"},
-    { "name": "Discord", "src": "./icons/Discord.ico"},
-    { "name": "Docker", "src": "./icons/Docker.ico"},
-    { "name": "Dota", "src": "./icons/Dota.ico"},
-    { "name": "Dropbox", "src": "./icons/Dropbox.ico"},
-    { "name": "EA", "src": "./icons/EA.ico"},
-    { "name": "Elden Ring", "src": "./icons/Elden Ring.ico"},
-    { "name": "Epic Games", "src": "./icons/Epic Games.ico"}
+    {
+        "name": "Ableton Live",
+        "src": "./icons/Ableton Live.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Adobe After Effects",
+        "src": "./icons/Adobe After Effects.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Adobe Illustrator",
+        "src": "./icons/Adobe Illustrator.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Adobe Lightroom",
+        "src": "./icons/Adobe Lightroom.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Adobe Photoshop",
+        "src": "./icons/Adobe Photoshop.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Adobe Premiere Pro",
+        "src": "./icons/Adobe Premiere Pro.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Affinity",
+        "src": "./icons/Affinity Photo.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Among Us",
+        "src": "./icons/Among Us.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Android Studio",
+        "src": "./icons/Android Studio.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Apex Legends",
+        "src": "./icons/Apex Legends.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Apple Music",
+        "src": "./icons/Apple Music.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Arc Browser",
+        "src": "./icons/Arc Browser.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Aseprite",
+        "src": "./icons/Aseprite.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Assassin's Creed",
+        "src": "./icons/Assassin’s Creed.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Assetto Corsa",
+        "src": "./icons/Assetto Corsa.ico",
+        "category": "Games"
+    },
+    {
+        "name": "ATLauncher",
+        "src": "./icons/ATLauncher.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Atom IDE",
+        "src": "./icons/Atom IDE.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Audacity",
+        "src": "./icons/Audacity.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Banana Shooter",
+        "src": "./icons/Banana Shooter.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Battle.net",
+        "src": "./icons/Battle.net.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Blender",
+        "src": "./icons/Blender.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "BlockBench",
+        "src": "./icons/BlockBench.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Borderless Minecraft",
+        "src": "./icons/Borderless Minecraft.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Brackets IDE",
+        "src": "./icons/Brackets IDE.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Brave",
+        "src": "./icons/Brave.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Call of Duty",
+        "src": "./icons/Call of Duty.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Camo Studio",
+        "src": "./icons/Camo Studio.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Canva",
+        "src": "./icons/Canva.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Celeste",
+        "src": "./icons/Celeste.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Cheat Engine",
+        "src": "./icons/Cheat Engine.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Chrome",
+        "src": "./icons/Chrome.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Cities Skylines",
+        "src": "./icons/Cities Skylines.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Command Prompt",
+        "src": "./icons/Command Prompt.ico",
+        "category": "System"
+    },
+    {
+        "name": "Cookie Clicker",
+        "src": "./icons/Cookie Clicker.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Counter Strike",
+        "src": "./icons/Counter Strike.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Crab Game",
+        "src": "./icons/Crab Game.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Crusader Kings",
+        "src": "./icons/Crusader Kings.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Curse Forge",
+        "src": "./icons/CurseForge.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Dark Souls",
+        "src": "./icons/Dark Souls.ico",
+        "category": "Games"
+    },
+    {
+        "name": "DaVinci Resolve",
+        "src": "./icons/DaVinci Resolve.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Dead Cells",
+        "src": "./icons/Dead Cells.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Destiny",
+        "src": "./icons/Destiny.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Discord Canary",
+        "src": "./icons/Discord Canary.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Discord",
+        "src": "./icons/Discord.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Docker",
+        "src": "./icons/Docker.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Dota",
+        "src": "./icons/Dota.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Dropbox",
+        "src": "./icons/Dropbox.ico",
+        "category": "Other"
+    },
+    {
+        "name": "EA",
+        "src": "./icons/EA.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Elden Ring",
+        "src": "./icons/Elden Ring.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Epic Games",
+        "src": "./icons/Epic Games.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Evernote",
+        "src": "./icons/Evernote.ico",
+        "category": "List"
+    },
+    {
+        "name": "F1",
+        "src": "./icons/F1.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Factorio",
+        "src": "./icons/Factorio.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Fall Guys",
+        "src": "./icons/Fall Guys.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Fallout Shelter",
+        "src": "./icons/Fallout Shelter.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Figma",
+        "src": "./icons/Figma.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "File Explorer",
+        "src": "./icons/File Explorer.ico",
+        "category": "System"
+    },
+    {
+        "name": "FiveM",
+        "src": "./icons/FiveM.ico",
+        "category": "Games"
+    },
+    {
+        "name": "FL Studio",
+        "src": "./icons/FL Studio.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Fortnite",
+        "src": "./icons/Fortnite.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Forza Horizon",
+        "src": "./icons/Forza Horizon.ico",
+        "category": "Games"
+    },
+    {
+        "name": "FTB",
+        "src": "./icons/FTB.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Garry's Mod",
+        "src": "./icons/Garry's Mod.ico",
+        "category": "Games"
+    },
+    {
+        "name": "GDLauncher",
+        "src": "./icons/GDLauncher.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "GIMP",
+        "src": "./icons/GIMP.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Github Desktop",
+        "src": "./icons/Github Desktop.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "GitKraken",
+        "src": "./icons/GitKraken.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "GOG Galaxy",
+        "src": "./icons/GOG Galaxy.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Google Drive",
+        "src": "./icons/Google Drive.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Gran Turismo",
+        "src": "./icons/Gran Turismo.ico",
+        "category": "Games"
+    },
+    {
+        "name": "GTAV",
+        "src": "./icons/GTAV.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Guilded",
+        "src": "./icons/Guilded.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Hades",
+        "src": "./icons/Hades.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Hollow Knight",
+        "src": "./icons/Hollow Knight.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Horizon Zero Dawn",
+        "src": "./icons/Horizon Zero Dawn.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Inkscape",
+        "src": "./icons/Inkscape.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "IntelliJ IDEA",
+        "src": "./icons/IntelliJ IDEA.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "IOBit Unlocker",
+        "src": "./icons/IObit Unlocker.ico",
+        "category": "System"
+    },
+    {
+        "name": "It Takes Two",
+        "src": "./icons/It Takes Two.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Itch.io",
+        "src": "./icons/Itch.io.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Just Act Natural",
+        "src": "./icons/Just Act Natural.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Kerbal Space Program",
+        "src": "./icons/Kerbal Space Program.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Krita",
+        "src": "./icons/Krita.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "League of Legends",
+        "src": "./icons/League of Legends.ico",
+        "category": "Games"
+    },
+    {
+        "name": "LibreOffice Suite",
+        "src": "./icons/LibreOffice Suite.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Logitech G HUB",
+        "src": "./icons/logitech G HUB.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Lunar Client",
+        "src": "./icons/Lunar Client.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "MEGA",
+        "src": "./icons/MEGA.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Meta Quest Link",
+        "src": "./icons/Meta Quest Link.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Microsoft Access Uniform",
+        "src": "./icons/Microsoft Access Uniform.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft Access",
+        "src": "./icons/Microsoft Access.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft Edge",
+        "src": "./icons/Microsoft Edge.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Microsoft Excel",
+        "src": "./icons/Microsoft Excel.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft Office",
+        "src": "./icons/Microsoft Office.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft OneNote",
+        "src": "./icons/Microsoft OneNote.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft OutLook Uniform",
+        "src": "./icons/Microsoft OutLook Uniform.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft Outlook",
+        "src": "./icons/Microsoft Outlook.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft PowerPoint Uniform",
+        "src": "./icons/Microsoft PowerPoint Uniform.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Microsoft PowerPoint",
+        "src": "./icons/Microsoft PowerPoint.ico",
+        "category": "Office"
+    },
+    {
+        "name": "Minecraft Launcher",
+        "src": "./icons/Minecraft Launcher.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Mongodb Compass",
+        "src": "./icons/Mongodb Compass.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Monster Hunter",
+        "src": "./icons/Monster Hunter.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Motor Town Behind The Wheel",
+        "src": "./icons/Motor Town Behind The Wheel.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Mozilla Firefox",
+        "src": "./icons/Mozilla Firefox.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Need For Speed",
+        "src": "./icons/Need For Speed.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Notion",
+        "src": "./icons/Notion.ico",
+        "category": "List"
+    },
+    {
+        "name": "NVIDIA",
+        "src": "./icons/NVIDIA.ico",
+        "category": "Other"
+    },
+    {
+        "name": "OBS",
+        "src": "./icons/OBS.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Obsidian",
+        "src": "./icons/Obsidian.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "One-armed Cook",
+        "src": "./icons/One-armed Cook.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Opera GX",
+        "src": "./icons/Opera GX.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Opera",
+        "src": "./icons/Opera.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Overwatch",
+        "src": "./icons/Overwatch.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Phasmophobia",
+        "src": "./icons/Phasmophobia.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Placid Plastic Duck Simulator",
+        "src": "./icons/Placid Plastic Duck Simulator.ico",
+        "category": "Games"
+    },
+    {
+        "name": "PlayStation",
+        "src": "./icons/PlayStation App.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Postman",
+        "src": "./icons/Postman.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "PowerWash Simulator",
+        "src": "./icons/PowerWash Simulator.ico",
+        "category": "Games"
+    },
+    {
+        "name": "PyCharm",
+        "src": "./icons/PyCharm.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "qBittorrent",
+        "src": "./icons/qBittorrent.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Rainbow Six Siege",
+        "src": "./icons/Rainbow Six Siege.ico",
+        "category": "Games"
+    },
+    {
+        "name": "RBXIDLE",
+        "src": "./icons/RBXIDLE.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Re-Volt",
+        "src": "./icons/Re-Volt.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Recycle Bin Empty",
+        "src": "./icons/Recycle Bin Empty.ico",
+        "category": "System"
+    },
+    {
+        "name": "Recycle Bin Full",
+        "src": "./icons/Recycle Bin Full.ico",
+        "category": "System"
+    },
+    {
+        "name": "REPO",
+        "src": "./icons/REPO.ico",
+        "category": "Games"
+    },
+    {
+        "name": "RimWorld",
+        "src": "./icons/RimWorld.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Riot Client",
+        "src": "./icons/Riot Client.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Roblox Studio",
+        "src": "./icons/Roblox Studio.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Roblox",
+        "src": "./icons/Roblox.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Rocket League",
+        "src": "./icons/Rocket League.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Rockstar Games",
+        "src": "./icons/Rockstar Games.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "ROUNDS",
+        "src": "./icons/ROUNDS.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Scrape Mechanic",
+        "src": "./icons/Scrape Mechanic.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Screw Driver",
+        "src": "./icons/Screw Drivers.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Sea of Thieves",
+        "src": "./icons/Sea of Thieves.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Settings",
+        "src": "./icons/Settings.ico",
+        "category": "System"
+    },
+    {
+        "name": "SideQuest",
+        "src": "./icons/SideQuest.ico",
+        "category": "Games"
+    },
+    {
+        "name": "SignalRgb",
+        "src": "./icons/SignalRgb.ico",
+        "category": "Other"
+    },
+    {
+        "name": "Sketch",
+        "src": "./icons/Sketch.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Skyrim",
+        "src": "./icons/Skyrim.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Slay the Spire",
+        "src": "./icons/Slay the Spire.ico",
+        "category": "Games"
+    },
+    {
+        "name": "SoundCloud",
+        "src": "./icons/SoundCloud.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Spotify",
+        "src": "./icons/Spotify.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Squirrel with a Gun",
+        "src": "./icons/Squirrel with a Gun.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Stardew Valley",
+        "src": "./icons/Stardew Valley.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Steam",
+        "src": "./icons/Steam.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Stick Fight The Game",
+        "src": "./icons/Stick Fight The Game.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Sticky Notes",
+        "src": "./icons/Sticky Notes.ico",
+        "category": "List"
+    },
+    {
+        "name": "Sublime Text",
+        "src": "./icons/Sublime Text.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Supermarket Together",
+        "src": "./icons/Supermarket Together.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Terraria",
+        "src": "./icons/Terraria.ico",
+        "category": "Games"
+    },
+    {
+        "name": "The Sims",
+        "src": "./icons/The Sims.ico",
+        "category": "Games"
+    },
+    {
+        "name": "The Witcher",
+        "src": "./icons/The Witcher.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Thunderstore Mod Manager",
+        "src": "./icons/Thunderstore Mod Manager.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Todoist",
+        "src": "./icons/Todoist.ico",
+        "category": "List"
+    },
+    {
+        "name": "Tor",
+        "src": "./icons/Tor.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Total War",
+        "src": "./icons/Total War.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Ubisoft",
+        "src": "./icons/Ubisoft.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Undertale",
+        "src": "./icons/Undertale.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Unity",
+        "src": "./icons/Unity.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Unrailed",
+        "src": "./icons/Unrailed.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Unreal Engine",
+        "src": "./icons/Unreal Engine.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Valorant",
+        "src": "./icons/Valorant.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Visual Studio Code",
+        "src": "./icons/Visual Studio Code.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Visual Studio",
+        "src": "./icons/Visual Studio.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Vivaldi",
+        "src": "./icons/Vivaldi.ico",
+        "category": "Browser"
+    },
+    {
+        "name": "Voicemeeter",
+        "src": "./icons/Voicemeeter.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "VoiceMod",
+        "src": "./icons/VoiceMod.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "WeMod",
+        "src": "./icons/WeMod.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "WSL",
+        "src": "./icons/WSL.ico",
+        "category": "Programmer",
+        "disabled": true
+    },
+    {
+        "name": "XBox App",
+        "src": "./icons/Xbox App.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "XCode",
+        "src": "./icons/Xcode.ico",
+        "category": "Programmer"
+    },
+    {
+        "name": "Youtube Music",
+        "src": "./icons/Youtube Music.ico",
+        "category": "Audio"
+    },
+    {
+        "name": "Zelda",
+        "src": "./icons/Zelda.ico",
+        "category": "Games"
+    }
 ]

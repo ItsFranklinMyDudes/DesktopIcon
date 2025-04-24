@@ -116,28 +116,26 @@ app.use('/icons', express.static(path.join(__dirname, 'icons'), {
 app.use(express.static(path.join(__dirname)));
 app.use(express.json({ limit: '50mb' }));
 
-// List available icons
 app.get("/api/icons", (req, res) => {
     const iconsDir = path.join(__dirname, "icons");
+    const list = require('./IconList.json');
     const cdnBaseUrl = "https://cdn.desktopicon.net/icons";
 
     fs.readdir(iconsDir, (err, files) => {
         if (err) return res.status(500).json({ error: "Failed to load icons" });
 
-        const icons = files
-            .filter(file => /\.(ico)$/i.test(file))
-            .map(file => ({
-                name: path.parse(file).name,
-                src: useCDN ? `${cdnBaseUrl}/${file}` : `/icons/${file}`
+        const icons = list
+            .filter(icon => !icon.disabled)
+            .map(icon => ({
+                name: icon.name,
+                src: useCDN ? `${cdnBaseUrl}/${path.basename(icon.src)}` : icon.src
             }));
-        
-        res.json(icons);
 
-        // console.log(JSON.stringify(icons, null, 2));
+        res.json(icons);
     });
 });
 
-// Download selected icons as ZIP
+
 // Download selected icons as ZIP
 app.post("/api/download", async (req, res) => {
     const { coloredIcons } = req.body;
@@ -152,33 +150,39 @@ app.post("/api/download", async (req, res) => {
     zip.on("error", err => res.status(500).send({ error: err.message }));
 
     try {
+        // // Add the setShortcutIcons.bat file to the ZIP
+        // const batFilePath = path.join(__dirname, "setShortcutIcons.bat");
+        // if (fs.existsSync(batFilePath)) {
+        //     zip.file(batFilePath, { name: "setShortcutIcons.bat" });
+        // }
+
         for (const icon of coloredIcons) {
             // Validate that the icon data has proper ICO format
             const iconBuffer = Buffer.from(icon.data, 'base64');
-            
+
             // Check if the buffer starts with proper ICO header (00 00 01 00)
-            const hasValidHeader = iconBuffer.length >= 4 && 
-                                  iconBuffer[0] === 0 && 
-                                  iconBuffer[1] === 0 && 
-                                  iconBuffer[2] === 1 && 
-                                  iconBuffer[3] === 0;
-            
+            const hasValidHeader = iconBuffer.length >= 4 &&
+                iconBuffer[0] === 0 &&
+                iconBuffer[1] === 0 &&
+                iconBuffer[2] === 1 &&
+                iconBuffer[3] === 0;
+
             if (!hasValidHeader) {
                 // If data doesn't have a proper ICO header, we need to add it
                 // Create a proper ICO format buffer
                 const iconCount = 1; // We're adding one icon image
-                
+
                 // ICO header (6 bytes)
                 const header = Buffer.alloc(6);
                 header.writeUInt16LE(0, 0);     // Reserved, must be 0
                 header.writeUInt16LE(1, 2);     // ICO file type (1)
                 header.writeUInt16LE(iconCount, 4); // Number of images
-                
+
                 // Icon directory entry (16 bytes per entry)
                 const dirEntry = Buffer.alloc(16);
                 const width = 32;  // Assuming 32x32 icon - adjust as needed
                 const height = 32; // Assuming 32x32 icon - adjust as needed
-                
+
                 dirEntry.writeUInt8(width === 256 ? 0 : width, 0);  // Width
                 dirEntry.writeUInt8(height === 256 ? 0 : height, 1); // Height
                 dirEntry.writeUInt8(0, 2);      // Color palette size (0 for no palette)
@@ -187,21 +191,21 @@ app.post("/api/download", async (req, res) => {
                 dirEntry.writeUInt16LE(32, 6);  // Bits per pixel (32 for RGBA)
                 dirEntry.writeUInt32LE(iconBuffer.length, 8); // Size of image data
                 dirEntry.writeUInt32LE(22, 12); // Offset of image data (6 + 16)
-                
+
                 // Combine all parts into a proper ICO file
                 const properIconBuffer = Buffer.concat([
                     header,
                     dirEntry,
                     iconBuffer
                 ]);
-                
+
                 zip.append(properIconBuffer, { name: `${icon.name}.ico` });
             } else {
                 // If it already has a valid header, use it as is
                 zip.append(iconBuffer, { name: `${icon.name}.ico` });
             }
         }
-        
+
         zip.pipe(res);
         zip.finalize();
     } catch (error) {

@@ -1,16 +1,12 @@
 [
     "FOREVER TODO: fuck load of icons",
-    "FIX: not downloading selected icons - only downloads the rendered icon",
-    "FIX: ico files not working in Windows - shows error message saying 'no icon content in ico'",
     "FIX: CDN links - cdn url is not working",
-    "add support for multiple icon formats",
     "Review selected Icons before downloading",
     "easy way to contact users when submitting an icon",
     "add a user feedback system",
     "add filters for icon categories",
-    "add support for different icon sizes",
+    "add support for different icon sizes - in downloaded file",
     "add support for different icon styles - icon packs kinda",
     "add support for more OSs (Linux, MacOS, maybe even mobile)",
-    "file convert to ico - convert png to ico",
-    "in downloaded file give users different sizes"
+    "file convert to ico - convert png to ico"
 ]
