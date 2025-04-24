@@ -737,15 +737,36 @@ confirmButton.addEventListener("click", async () => {
         // Show loading spinner
         loadingOverlay.classList.add("active");
 
-        // Capture colored icons
+        // Fetch all icons if not already fetched
+        if (allIcons.length === 0) {
+            allIcons = await fetchIcons();
+        }
+
+        // Capture colored icons for all selected icons
         const coloredIcons = [];
         for (const iconName of selectedIcons) {
-            const iconCanvas = document.querySelector(`.icon[data-name="${iconName}"]`);
-            if (iconCanvas) {
-                const base64Data = captureColoredIcon(iconCanvas);
-                coloredIcons.push({
-                    name: iconName,
-                    data: base64Data
+            const iconData = allIcons.find(icon => icon.name === iconName);
+            if (iconData) {
+                const img = new Image();
+                img.src = iconData.src;
+
+                await new Promise(resolve => {
+                    img.onload = () => {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+
+                        // Draw and recolor the icon
+                        recolorCanvas(canvas, img, currentColor);
+
+                        // Capture the recolored icon
+                        const base64Data = canvas.toDataURL('image/png').split(',')[1];
+                        coloredIcons.push({
+                            name: iconName,
+                            data: base64Data
+                        });
+
+                        resolve();
+                    };
                 });
             }
         }
