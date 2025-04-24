@@ -138,6 +138,7 @@ app.get("/api/icons", (req, res) => {
 });
 
 // Download selected icons as ZIP
+// Download selected icons as ZIP
 app.post("/api/download", async (req, res) => {
     const { coloredIcons } = req.body;
 
@@ -152,9 +153,55 @@ app.post("/api/download", async (req, res) => {
 
     try {
         for (const icon of coloredIcons) {
+            // Validate that the icon data has proper ICO format
             const iconBuffer = Buffer.from(icon.data, 'base64');
-            zip.append(iconBuffer, { name: `${icon.name}.ico` });
+            
+            // Check if the buffer starts with proper ICO header (00 00 01 00)
+            const hasValidHeader = iconBuffer.length >= 4 && 
+                                  iconBuffer[0] === 0 && 
+                                  iconBuffer[1] === 0 && 
+                                  iconBuffer[2] === 1 && 
+                                  iconBuffer[3] === 0;
+            
+            if (!hasValidHeader) {
+                // If data doesn't have a proper ICO header, we need to add it
+                // Create a proper ICO format buffer
+                const iconCount = 1; // We're adding one icon image
+                
+                // ICO header (6 bytes)
+                const header = Buffer.alloc(6);
+                header.writeUInt16LE(0, 0);     // Reserved, must be 0
+                header.writeUInt16LE(1, 2);     // ICO file type (1)
+                header.writeUInt16LE(iconCount, 4); // Number of images
+                
+                // Icon directory entry (16 bytes per entry)
+                const dirEntry = Buffer.alloc(16);
+                const width = 32;  // Assuming 32x32 icon - adjust as needed
+                const height = 32; // Assuming 32x32 icon - adjust as needed
+                
+                dirEntry.writeUInt8(width === 256 ? 0 : width, 0);  // Width
+                dirEntry.writeUInt8(height === 256 ? 0 : height, 1); // Height
+                dirEntry.writeUInt8(0, 2);      // Color palette size (0 for no palette)
+                dirEntry.writeUInt8(0, 3);      // Reserved, must be 0
+                dirEntry.writeUInt16LE(1, 4);   // Color planes (1 for ICO)
+                dirEntry.writeUInt16LE(32, 6);  // Bits per pixel (32 for RGBA)
+                dirEntry.writeUInt32LE(iconBuffer.length, 8); // Size of image data
+                dirEntry.writeUInt32LE(22, 12); // Offset of image data (6 + 16)
+                
+                // Combine all parts into a proper ICO file
+                const properIconBuffer = Buffer.concat([
+                    header,
+                    dirEntry,
+                    iconBuffer
+                ]);
+                
+                zip.append(properIconBuffer, { name: `${icon.name}.ico` });
+            } else {
+                // If it already has a valid header, use it as is
+                zip.append(iconBuffer, { name: `${icon.name}.ico` });
+            }
         }
+        
         zip.pipe(res);
         zip.finalize();
     } catch (error) {
