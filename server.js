@@ -135,7 +135,6 @@ app.get("/api/icons", (req, res) => {
     });
 });
 
-
 // Download selected icons as ZIP
 app.post("/api/download", async (req, res) => {
     const { coloredIcons } = req.body;
@@ -289,6 +288,11 @@ app.post('/api/submit-request', (req, res, next) => {
 
 // Serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Serve request.html without .html extension
+app.get('/request', (req, res) => {
+    res.sendFile(path.join(__dirname, 'request.html'));
+});
 
 // Start server
 app.listen(PORT, () => {
