@@ -4,6 +4,7 @@ const path = require("path");
 const archiver = require("archiver");
 require('dotenv').config();
 const multer = require('multer');
+// const fetch = require('node-fetch'); // Ensure you have this dependency installed
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -116,23 +117,42 @@ app.use('/icons', express.static(path.join(__dirname, 'icons'), {
 app.use(express.static(path.join(__dirname)));
 app.use(express.json({ limit: '50mb' }));
 
-app.get("/api/icons", (req, res) => {
+app.get("/api/icons", async (req, res) => {
     const iconsDir = path.join(__dirname, "icons");
     const list = require('./IconList.json');
     const cdnBaseUrl = "https://cdn.desktopicon.net/icons";
 
-    fs.readdir(iconsDir, (err, files) => {
-        if (err) return res.status(500).json({ error: "Failed to load icons" });
+    try {
+        const icons = await Promise.all(
+            list
+                .filter(icon => !icon.disabled)
+                .map(async (icon) => {
+                    let finalSrc = icon.cdn || (useCDN ? icon.cdn : icon.src);
 
-        const icons = list
-            .filter(icon => !icon.disabled)
-            .map(icon => ({
-                name: icon.name,
-                src: useCDN ? `${cdnBaseUrl}/${path.basename(icon.src)}` : icon.src
-            }));
+                    // Check if the CDN URL is accessible
+                    if (icon.cdn || useCDN) {
+                        try {
+                            const response = await fetch(finalSrc, { method: 'HEAD' });
+                            if (!response.ok) {
+                                throw new Error(`CDN URL not accessible`);
+                            }
+                        } catch (error) {
+                            finalSrc = icon.src; // Fallback to src if CDN URL fails
+                        }
+                    }
+
+                    return {
+                        name: icon.name,
+                        src: finalSrc
+                    };
+                })
+        );
 
         res.json(icons);
-    });
+    } catch (error) {
+        console.error("Error fetching icons:", error);
+        res.status(500).json({ error: "Failed to load icons" });
+    }
 });
 
 // Download selected icons as ZIP

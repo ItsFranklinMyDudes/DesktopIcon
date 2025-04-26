@@ -2,877 +2,1070 @@
     {
         "name": "Ableton Live",
         "src": "./icons/Ableton Live.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Ableton Live.ico",
         "category": "Audio"
     },
     {
         "name": "Adobe After Effects",
         "src": "./icons/Adobe After Effects.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe After Effects.ico",
         "category": "Artist"
     },
     {
         "name": "Adobe Illustrator",
         "src": "./icons/Adobe Illustrator.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Illustrator.ico",
         "category": "Artist"
     },
     {
         "name": "Adobe Lightroom",
         "src": "./icons/Adobe Lightroom.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Lightroom.ico",
         "category": "Artist"
     },
     {
         "name": "Adobe Photoshop",
         "src": "./icons/Adobe Photoshop.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Photoshop.ico",
         "category": "Artist"
     },
     {
         "name": "Adobe Premiere Pro",
         "src": "./icons/Adobe Premiere Pro.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Premiere Pro.ico",
         "category": "Artist"
     },
     {
         "name": "Affinity",
         "src": "./icons/Affinity Photo.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Affinity Photo.ico",
         "category": "Artist"
     },
     {
         "name": "Among Us",
         "src": "./icons/Among Us.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Among Us.ico",
         "category": "Games"
     },
     {
         "name": "Android Studio",
         "src": "./icons/Android Studio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Android Studio.ico",
         "category": "Programmer"
     },
     {
         "name": "Apex Legends",
         "src": "./icons/Apex Legends.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Apex Legends.ico",
         "category": "Games"
     },
     {
         "name": "Apple Music",
         "src": "./icons/Apple Music.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Apple Music.ico",
         "category": "Audio"
     },
     {
         "name": "Arc Browser",
         "src": "./icons/Arc Browser.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Arc Browser.ico",
         "category": "Browser"
     },
     {
         "name": "Aseprite",
         "src": "./icons/Aseprite.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Aseprite.ico",
         "category": "Artist"
     },
     {
         "name": "Assassin's Creed",
-        "src": "./icons/Assassin’s Creed.ico",
+        "src": "./icons/Assassin's Creed.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Assassin's Creed.ico",
         "category": "Games"
     },
     {
         "name": "Assetto Corsa",
         "src": "./icons/Assetto Corsa.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Assetto Corsa.ico",
         "category": "Games"
     },
     {
         "name": "ATLauncher",
         "src": "./icons/ATLauncher.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/ATLauncher.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Atom IDE",
         "src": "./icons/Atom IDE.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Atom IDE.ico",
         "category": "Programmer"
     },
     {
         "name": "Audacity",
         "src": "./icons/Audacity.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Audacity.ico",
         "category": "Audio"
     },
     {
         "name": "Banana Shooter",
         "src": "./icons/Banana Shooter.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Banana Shooter.ico",
         "category": "Games"
     },
     {
         "name": "Battle.net",
         "src": "./icons/Battle.net.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Battle.net.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Blender",
         "src": "./icons/Blender.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Blender.ico",
         "category": "Artist"
     },
     {
         "name": "BlockBench",
         "src": "./icons/BlockBench.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/BlockBench.ico",
         "category": "Artist"
     },
     {
         "name": "Borderless Minecraft",
         "src": "./icons/Borderless Minecraft.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Borderless Minecraft.ico",
         "category": "Other"
     },
     {
         "name": "Brackets IDE",
         "src": "./icons/Brackets IDE.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Brackets IDE.ico",
         "category": "Programmer"
     },
     {
         "name": "Brave",
         "src": "./icons/Brave.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Brave.ico",
         "category": "Browser"
     },
     {
         "name": "Call of Duty",
         "src": "./icons/Call of Duty.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty.ico",
         "category": "Games"
     },
     {
         "name": "Camo Studio",
         "src": "./icons/Camo Studio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Camo Studio.ico",
         "category": "Other"
     },
     {
         "name": "Canva",
         "src": "./icons/Canva.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Canva.ico",
         "category": "Artist"
     },
     {
         "name": "Celeste",
         "src": "./icons/Celeste.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Celeste.ico",
         "category": "Games"
     },
     {
         "name": "Cheat Engine",
         "src": "./icons/Cheat Engine.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Cheat Engine.ico",
         "category": "Other"
     },
     {
         "name": "Chrome",
         "src": "./icons/Chrome.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Chrome.ico",
         "category": "Browser"
     },
     {
         "name": "Cities Skylines",
         "src": "./icons/Cities Skylines.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Cities Skylines.ico",
         "category": "Games"
     },
     {
         "name": "Command Prompt",
         "src": "./icons/Command Prompt.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Command Prompt.ico",
         "category": "System"
     },
     {
         "name": "Cookie Clicker",
         "src": "./icons/Cookie Clicker.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Cookie Clicker.ico",
         "category": "Games"
     },
     {
         "name": "Counter Strike",
         "src": "./icons/Counter Strike.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Counter Strike.ico",
         "category": "Games"
     },
     {
         "name": "Crab Game",
         "src": "./icons/Crab Game.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Crab Game.ico",
         "category": "Games"
     },
     {
         "name": "Crusader Kings",
         "src": "./icons/Crusader Kings.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Crusader Kings.ico",
         "category": "Games"
     },
     {
         "name": "Curse Forge",
         "src": "./icons/CurseForge.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/CurseForge.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Dark Souls",
         "src": "./icons/Dark Souls.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Dark Souls.ico",
         "category": "Games"
     },
     {
         "name": "DaVinci Resolve",
         "src": "./icons/DaVinci Resolve.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/DaVinci Resolve.ico",
         "category": "Artist"
     },
     {
         "name": "Dead Cells",
         "src": "./icons/Dead Cells.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Dead Cells.ico",
         "category": "Games"
     },
     {
         "name": "Destiny",
         "src": "./icons/Destiny.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Destiny.ico",
         "category": "Games"
     },
     {
         "name": "Discord Canary",
         "src": "./icons/Discord Canary.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Discord Canary.ico",
         "category": "Other"
     },
     {
         "name": "Discord",
         "src": "./icons/Discord.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Discord.ico",
         "category": "Other"
     },
     {
         "name": "Docker",
         "src": "./icons/Docker.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Docker.ico",
         "category": "Programmer"
     },
     {
         "name": "Dota",
         "src": "./icons/Dota.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Dota.ico",
         "category": "Games"
     },
     {
         "name": "Dropbox",
         "src": "./icons/Dropbox.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Dropbox.ico",
         "category": "Other"
     },
     {
         "name": "EA",
         "src": "./icons/EA.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/EA.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Elden Ring",
         "src": "./icons/Elden Ring.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Elden Ring.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Epic Games",
         "src": "./icons/Epic Games.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Epic Games.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Evernote",
         "src": "./icons/Evernote.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Evernote.ico",
         "category": "List"
     },
     {
         "name": "F1",
         "src": "./icons/F1.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/F1.ico",
         "category": "Games"
     },
     {
         "name": "Factorio",
         "src": "./icons/Factorio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Factorio.ico",
         "category": "Games"
     },
     {
         "name": "Fall Guys",
         "src": "./icons/Fall Guys.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Fall Guys.ico",
         "category": "Games"
     },
     {
         "name": "Fallout Shelter",
         "src": "./icons/Fallout Shelter.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Fallout Shelter.ico",
         "category": "Games"
     },
     {
         "name": "Figma",
         "src": "./icons/Figma.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Figma.ico",
         "category": "Artist"
     },
     {
         "name": "File Explorer",
         "src": "./icons/File Explorer.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/File Explorer.ico",
         "category": "System"
     },
     {
         "name": "FiveM",
         "src": "./icons/FiveM.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/FiveM.ico",
         "category": "Games"
     },
     {
         "name": "FL Studio",
         "src": "./icons/FL Studio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/FL Studio.ico",
         "category": "Artist"
     },
     {
         "name": "Fortnite",
         "src": "./icons/Fortnite.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Fortnite.ico",
         "category": "Games"
     },
     {
         "name": "Forza Horizon",
         "src": "./icons/Forza Horizon.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Forza Horizon.ico",
         "category": "Games"
     },
     {
         "name": "FTB",
         "src": "./icons/FTB.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/FTB.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Garry's Mod",
         "src": "./icons/Garry's Mod.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Garry's Mod.ico",
         "category": "Games"
     },
     {
         "name": "GDLauncher",
         "src": "./icons/GDLauncher.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/GDLauncher.ico",
         "category": "Game Launcher"
     },
     {
         "name": "GIMP",
         "src": "./icons/GIMP.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/GIMP.ico",
         "category": "Artist"
     },
     {
         "name": "Github Desktop",
         "src": "./icons/Github Desktop.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Github Desktop.ico",
         "category": "Programmer"
     },
     {
         "name": "GitKraken",
         "src": "./icons/GitKraken.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/GitKraken.ico",
         "category": "Programmer"
     },
     {
         "name": "GOG Galaxy",
         "src": "./icons/GOG Galaxy.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/GOG Galaxy.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Google Drive",
         "src": "./icons/Google Drive.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Google Drive.ico",
         "category": "Other"
     },
     {
         "name": "Gran Turismo",
         "src": "./icons/Gran Turismo.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Gran Turismo.ico",
         "category": "Games"
     },
     {
         "name": "GTAV",
         "src": "./icons/GTAV.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/GTAV.ico",
         "category": "Games"
     },
     {
         "name": "Guilded",
         "src": "./icons/Guilded.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Guilded.ico",
         "category": "Other"
     },
     {
         "name": "Hades",
         "src": "./icons/Hades.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Hades.ico",
         "category": "Games"
     },
     {
         "name": "Hollow Knight",
         "src": "./icons/Hollow Knight.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Hollow Knight.ico",
         "category": "Games"
     },
     {
         "name": "Horizon Zero Dawn",
         "src": "./icons/Horizon Zero Dawn.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Horizon Zero Dawn.ico",
         "category": "Games"
     },
     {
         "name": "Inkscape",
         "src": "./icons/Inkscape.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Inkscape.ico",
         "category": "Artist"
     },
     {
         "name": "IntelliJ IDEA",
         "src": "./icons/IntelliJ IDEA.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/IntelliJ IDEA.ico",
         "category": "Programmer"
     },
     {
         "name": "IOBit Unlocker",
         "src": "./icons/IObit Unlocker.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/IObit Unlocker.ico",
         "category": "System"
     },
     {
         "name": "It Takes Two",
         "src": "./icons/It Takes Two.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/It Takes Two.ico",
         "category": "Games"
     },
     {
         "name": "Itch.io",
         "src": "./icons/Itch.io.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Itch.io.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Just Act Natural",
         "src": "./icons/Just Act Natural.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Just Act Natural.ico",
         "category": "Games"
     },
     {
         "name": "Kerbal Space Program",
         "src": "./icons/Kerbal Space Program.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Kerbal Space Program.ico",
         "category": "Games"
     },
     {
         "name": "Krita",
         "src": "./icons/Krita.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Krita.ico",
         "category": "Artist"
     },
     {
         "name": "League of Legends",
         "src": "./icons/League of Legends.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/League of Legends.ico",
         "category": "Games"
     },
     {
         "name": "LibreOffice Suite",
         "src": "./icons/LibreOffice Suite.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/LibreOffice Suite.ico",
         "category": "Office"
     },
     {
         "name": "Logitech G HUB",
         "src": "./icons/logitech G HUB.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/logitech G HUB.ico",
         "category": "Other"
     },
     {
         "name": "Lunar Client",
         "src": "./icons/Lunar Client.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Lunar Client.ico",
         "category": "Game Launcher"
     },
     {
         "name": "MEGA",
         "src": "./icons/MEGA.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/MEGA.ico",
         "category": "Other"
     },
     {
         "name": "Meta Quest Link",
         "src": "./icons/Meta Quest Link.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Meta Quest Link.ico",
         "category": "Other"
     },
     {
         "name": "Microsoft Access Uniform",
         "src": "./icons/Microsoft Access Uniform.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Access Uniform.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft Access",
         "src": "./icons/Microsoft Access.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Access.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft Edge",
         "src": "./icons/Microsoft Edge.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Edge.ico",
         "category": "Browser"
     },
     {
         "name": "Microsoft Excel",
         "src": "./icons/Microsoft Excel.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Excel.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft Office",
         "src": "./icons/Microsoft Office.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Office.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft OneNote",
         "src": "./icons/Microsoft OneNote.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft OneNote.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft Outlook Uniform",
         "src": "./icons/Microsoft Outlook Uniform.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Outlook Uniform.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft Outlook",
         "src": "./icons/Microsoft Outlook.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Outlook.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft PowerPoint Uniform",
         "src": "./icons/Microsoft PowerPoint Uniform.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft PowerPoint Uniform.ico",
         "category": "Office"
     },
     {
         "name": "Microsoft PowerPoint",
         "src": "./icons/Microsoft PowerPoint.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft PowerPoint.ico",
         "category": "Office"
     },
     {
         "name": "Minecraft Launcher",
         "src": "./icons/Minecraft Launcher.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Minecraft Launcher.ico",
+        "category": "Game Launcher"
+    },
+    {
+        "name": "Modrinth App",
+        "src": "./icons/Modrinth App.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Modrinth App.ico",
         "category": "Game Launcher"
     },
     {
         "name": "MongoDB Compass",
         "src": "./icons/MongoDB Compass.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/MongoDB Compass.ico",
         "category": "Programmer"
     },
     {
         "name": "Monster Hunter",
         "src": "./icons/Monster Hunter.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Monster Hunter.ico",
         "category": "Games"
     },
     {
         "name": "Motor Town Behind The Wheel",
         "src": "./icons/Motor Town Behind The Wheel.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Motor Town Behind The Wheel.ico",
         "category": "Games"
     },
     {
         "name": "Mozilla Firefox",
         "src": "./icons/Mozilla Firefox.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Mozilla Firefox.ico",
         "category": "Browser"
     },
     {
         "name": "Need For Speed",
         "src": "./icons/Need For Speed.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Need For Speed.ico",
         "category": "Games"
     },
     {
         "name": "Notion",
         "src": "./icons/Notion.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Notion.ico",
         "category": "List"
     },
     {
         "name": "NVIDIA",
         "src": "./icons/NVIDIA.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/NVIDIA.ico",
         "category": "Other"
     },
     {
         "name": "OBS",
         "src": "./icons/OBS.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/OBS.ico",
         "category": "Other"
     },
     {
         "name": "Obsidian",
         "src": "./icons/Obsidian.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Obsidian.ico",
         "category": "Programmer"
     },
     {
         "name": "One-armed Cook",
         "src": "./icons/One-armed Cook.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/One-armed Cook.ico",
         "category": "Games"
     },
     {
         "name": "Opera GX",
         "src": "./icons/Opera GX.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Opera GX.ico",
         "category": "Browser"
     },
     {
         "name": "Opera",
         "src": "./icons/Opera.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Opera.ico",
         "category": "Browser"
     },
     {
         "name": "Overwatch",
         "src": "./icons/Overwatch.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Overwatch.ico",
         "category": "Games"
     },
     {
         "name": "Phasmophobia",
         "src": "./icons/Phasmophobia.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Phasmophobia.ico",
         "category": "Games"
     },
     {
         "name": "Placid Plastic Duck Simulator",
         "src": "./icons/Placid Plastic Duck Simulator.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Placid Plastic Duck Simulator.ico",
         "category": "Games"
     },
     {
         "name": "PlayStation",
         "src": "./icons/PlayStation App.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/PlayStation App.ico",
         "category": "Game Launcher"
+    },
+    {
+        "name": "Portal",
+        "src": "./icons/Portal.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Portal.ico",
+        "category": "Games"
     },
     {
         "name": "Postman",
         "src": "./icons/Postman.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Postman.ico",
         "category": "Programmer"
     },
     {
         "name": "PowerWash Simulator",
         "src": "./icons/PowerWash Simulator.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/PowerWash Simulator.ico",
         "category": "Games"
     },
     {
         "name": "PyCharm",
         "src": "./icons/PyCharm.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/PyCharm.ico",
         "category": "Programmer"
     },
     {
         "name": "qBittorrent",
         "src": "./icons/qBittorrent.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/qBittorrent.ico",
         "category": "Other"
     },
     {
         "name": "Rainbow Six Siege",
         "src": "./icons/Rainbow Six Siege.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Rainbow Six Siege.ico",
         "category": "Games"
     },
     {
         "name": "RBXIDLE",
         "src": "./icons/RBXIDLE.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/RBXIDLE.ico",
         "category": "Other"
     },
     {
         "name": "Re-Volt",
         "src": "./icons/Re-Volt.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Re-Volt.ico",
         "category": "Games"
     },
     {
         "name": "Recycle Bin Empty",
         "src": "./icons/Recycle Bin Empty.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Recycle Bin Empty.ico",
         "category": "System"
     },
     {
         "name": "Recycle Bin Full",
         "src": "./icons/Recycle Bin Full.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Recycle Bin Full.ico",
         "category": "System"
     },
     {
         "name": "REPO",
         "src": "./icons/REPO.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/REPO.ico",
         "category": "Games"
     },
     {
         "name": "RimWorld",
         "src": "./icons/RimWorld.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/RimWorld.ico",
         "category": "Games"
     },
     {
         "name": "Riot Client",
         "src": "./icons/Riot Client.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Riot Client.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Roblox Studio",
         "src": "./icons/Roblox Studio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Roblox Studio.ico",
         "category": "Programmer"
     },
     {
         "name": "Roblox",
         "src": "./icons/Roblox.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Roblox.ico",
         "category": "Games"
     },
     {
         "name": "Rocket League",
         "src": "./icons/Rocket League.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Rocket League.ico",
         "category": "Games"
     },
     {
         "name": "Rockstar Games",
         "src": "./icons/Rockstar Games.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Rockstar Games.ico",
         "category": "Game Launcher"
     },
     {
         "name": "ROUNDS",
         "src": "./icons/ROUNDS.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/ROUNDS.ico",
         "category": "Games"
     },
     {
         "name": "Scrape Mechanic",
         "src": "./icons/Scrape Mechanic.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Scrape Mechanic.ico",
         "category": "Games"
     },
     {
         "name": "Screw Driver",
         "src": "./icons/Screw Drivers.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Screw Drivers.ico",
         "category": "Games"
     },
     {
         "name": "Sea of Thieves",
         "src": "./icons/Sea of Thieves.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Sea of Thieves.ico",
         "category": "Games"
     },
     {
         "name": "Settings",
         "src": "./icons/Settings.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Settings.ico",
         "category": "System"
     },
     {
         "name": "SideQuest",
         "src": "./icons/SideQuest.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/SideQuest.ico",
         "category": "Games"
     },
     {
         "name": "SignalRgb",
         "src": "./icons/SignalRgb.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/SignalRgb.ico",
         "category": "Other"
     },
     {
         "name": "Sketch",
         "src": "./icons/Sketch.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Sketch.ico",
         "category": "Artist"
     },
     {
         "name": "Skyrim",
         "src": "./icons/Skyrim.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Skyrim.ico",
         "category": "Games"
     },
     {
         "name": "Slay the Spire",
         "src": "./icons/Slay the Spire.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Slay the Spire.ico",
         "category": "Games"
     },
     {
         "name": "SoundCloud",
         "src": "./icons/SoundCloud.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/SoundCloud.ico",
         "category": "Audio"
     },
     {
         "name": "Spotify",
         "src": "./icons/Spotify.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Spotify.ico",
         "category": "Audio"
     },
     {
         "name": "Squirrel with a Gun",
         "src": "./icons/Squirrel with a Gun.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Squirrel with a Gun.ico",
         "category": "Games"
     },
     {
         "name": "Stardew Valley",
         "src": "./icons/Stardew Valley.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Stardew Valley.ico",
         "category": "Games"
     },
     {
         "name": "Steam",
         "src": "./icons/Steam.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Steam.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Stick Fight The Game",
         "src": "./icons/Stick Fight The Game.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Stick Fight The Game.ico",
         "category": "Games"
     },
     {
         "name": "Sticky Notes",
         "src": "./icons/Sticky Notes.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Sticky Notes.ico",
         "category": "List"
     },
     {
         "name": "Sublime Text",
         "src": "./icons/Sublime Text.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Sublime Text.ico",
         "category": "Programmer"
     },
     {
         "name": "Supermarket Together",
         "src": "./icons/Supermarket Together.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Supermarket Together.ico",
         "category": "Games"
     },
     {
         "name": "Terraria",
         "src": "./icons/Terraria.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Terraria.ico",
         "category": "Games"
     },
     {
         "name": "The Sims",
         "src": "./icons/The Sims.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/The Sims.ico",
         "category": "Games"
     },
     {
         "name": "The Witcher",
         "src": "./icons/The Witcher.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/The Witcher.ico",
         "category": "Games"
     },
     {
         "name": "Thunderstore Mod Manager",
         "src": "./icons/Thunderstore Mod Manager.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Thunderstore Mod Manager.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Todoist",
         "src": "./icons/Todoist.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Todoist.ico",
         "category": "List"
     },
     {
         "name": "Tor",
         "src": "./icons/Tor.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Tor.ico",
         "category": "Browser"
     },
     {
         "name": "Total War",
         "src": "./icons/Total War.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Total War.ico",
+        "category": "Games"
+    },
+    {
+        "name": "Trackmania",
+        "src": "./icons/Trackmania.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Trackmania.ico",
         "category": "Games"
     },
     {
         "name": "Ubisoft",
         "src": "./icons/Ubisoft.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Ubisoft.ico",
         "category": "Game Launcher"
     },
     {
         "name": "Undertale",
         "src": "./icons/Undertale.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Undertale.ico",
         "category": "Games"
     },
     {
         "name": "Unity",
         "src": "./icons/Unity.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Unity.ico",
         "category": "Programmer"
     },
     {
         "name": "Unrailed",
         "src": "./icons/Unrailed.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Unrailed.ico",
         "category": "Games"
     },
     {
         "name": "Unreal Engine",
         "src": "./icons/Unreal Engine.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Unreal Engine.ico",
         "category": "Programmer"
     },
     {
         "name": "Valorant",
         "src": "./icons/Valorant.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Valorant.ico",
         "category": "Games"
     },
     {
         "name": "Visual Studio Code",
         "src": "./icons/Visual Studio Code.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Visual Studio Code.ico",
         "category": "Programmer"
     },
     {
         "name": "Visual Studio",
         "src": "./icons/Visual Studio.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Visual Studio.ico",
         "category": "Programmer"
     },
     {
         "name": "Vivaldi",
         "src": "./icons/Vivaldi.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Vivaldi.ico",
         "category": "Browser"
     },
     {
         "name": "Voicemeeter",
         "src": "./icons/Voicemeeter.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Voicemeeter.ico",
         "category": "Audio"
     },
     {
         "name": "VoiceMod",
         "src": "./icons/VoiceMod.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/VoiceMod.ico",
         "category": "Audio"
     },
     {
         "name": "WeMod",
         "src": "./icons/WeMod.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/WeMod.ico",
         "category": "Game Launcher"
     },
     {
         "name": "WSL",
         "src": "./icons/WSL.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/WSL.ico",
         "category": "Programmer",
         "disabled": true
     },
     {
         "name": "XBox App",
         "src": "./icons/Xbox App.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Xbox App.ico",
         "category": "Game Launcher"
     },
     {
         "name": "XCode",
         "src": "./icons/Xcode.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Xcode.ico",
         "category": "Programmer"
     },
     {
         "name": "YouTube Music",
         "src": "./icons/YouTube Music.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/YouTube Music.ico",
         "category": "Audio"
     },
     {
         "name": "Zelda",
         "src": "./icons/Zelda.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Zelda.ico",
         "category": "Games"
     }
 ]
