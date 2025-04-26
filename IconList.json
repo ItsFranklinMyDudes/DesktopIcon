@@ -475,8 +475,8 @@
         "category": "Office"
     },
     {
-        "name": "Microsoft OutLook Uniform",
-        "src": "./icons/Microsoft OutLook Uniform.ico",
+        "name": "Microsoft Outlook Uniform",
+        "src": "./icons/Microsoft Outlook Uniform.ico",
         "category": "Office"
     },
     {
@@ -500,8 +500,8 @@
         "category": "Game Launcher"
     },
     {
-        "name": "Mongodb Compass",
-        "src": "./icons/Mongodb Compass.ico",
+        "name": "MongoDB Compass",
+        "src": "./icons/MongoDB Compass.ico",
         "category": "Programmer"
     },
     {
@@ -866,8 +866,8 @@
         "category": "Programmer"
     },
     {
-        "name": "Youtube Music",
-        "src": "./icons/Youtube Music.ico",
+        "name": "YouTube Music",
+        "src": "./icons/YouTube Music.ico",
         "category": "Audio"
     },
     {

@@ -149,11 +149,11 @@ app.post("/api/download", async (req, res) => {
     zip.on("error", err => res.status(500).send({ error: err.message }));
 
     try {
-        // // Add the setShortcutIcons.bat file to the ZIP
-        // const batFilePath = path.join(__dirname, "setShortcutIcons.bat");
-        // if (fs.existsSync(batFilePath)) {
-        //     zip.file(batFilePath, { name: "setShortcutIcons.bat" });
-        // }
+        // Add the setShortcutIcons.bat file to the ZIP
+        const batFilePath = path.join(__dirname, "IconChanger.exe");
+        if (fs.existsSync(batFilePath)) {
+            zip.file(batFilePath, { name: "IconChanger.exe" });
+        }
 
         for (const icon of coloredIcons) {
             // Validate that the icon data has proper ICO format
