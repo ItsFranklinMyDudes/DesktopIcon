@@ -120,7 +120,6 @@ app.use(express.json({ limit: '50mb' }));
 app.get("/api/icons", async (req, res) => {
     const iconsDir = path.join(__dirname, "icons");
     const list = require('./IconList.json');
-    const cdnBaseUrl = "https://cdn.desktopicon.net/icons";
 
     try {
         const icons = await Promise.all(
@@ -258,17 +257,17 @@ app.post('/api/submit-request', (req, res, next) => {
 
         // Create image URL
         const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-        console.log(`[DEBUG] File uploaded successfully. Image URL: ${imageUrl}`);
+        // console.log(`[DEBUG] File uploaded successfully. Image URL: ${imageUrl}`);
 
         const webhookUrl = process.env.WEBHOOK_URL;
         if (!webhookUrl) {
-            console.error(`[ERROR] Webhook URL not configured.`);
+            // console.error(`[ERROR] Webhook URL not configured.`);
             throw new Error('Webhook URL not configured');
         }
 
         // Prepare the Discord webhook payload
         const payload = {
-            username: "Icon Request",
+            username: "Desktop Icon",
             avatar_url: "https://i.imgur.com/yMDfzco.png",
             embeds: [
                 {
@@ -279,12 +278,12 @@ app.post('/api/submit-request', (req, res, next) => {
                         { name: "Image URL:", value: imageUrl || "N/A" }
                     ],
                     image: { url: imageUrl },
-                    color: 3447003
+                    // color: 3447003
                 }
             ]
         };
 
-        console.log(`[DEBUG] Sending payload to Discord webhook:`, payload);
+        // console.log(`[DEBUG] Sending payload to Discord webhook:`, payload);
 
         const response = await fetch(webhookUrl, {
             method: 'POST',
@@ -298,10 +297,10 @@ app.post('/api/submit-request', (req, res, next) => {
             throw new Error(`Discord webhook error: ${response.status} ${errorText}`);
         }
 
-        console.log(`[DEBUG] Payload successfully sent to Discord webhook.`);
+        // console.log(`[DEBUG] Payload successfully sent to Discord webhook.`);
         res.status(200).json({ success: true, message: 'Request submitted successfully' });
     } catch (error) {
-        console.error(`[ERROR] Failed to process request:`, error);
+        // console.error(`[ERROR] Failed to process request:`, error);
         res.status(500).json({ error: 'Failed to process request' });
     }
 });

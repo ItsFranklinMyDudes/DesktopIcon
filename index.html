@@ -13,19 +13,21 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Desktop Icon Selector" />
-    <meta property="og:description" content="Say goodbye to boring Desktops and say hello to a beautiful Desktop. Pick your Icons, Choose your colors, and Design your Desktop. style your setup your way!" />
+    <meta property="og:description"
+        content="Say goodbye to boring Desktops and say hello to a beautiful Desktop. Pick your Icons, Choose your colors, and Design your Desktop. style your setup your way!" />
     <meta property="og:image" content="https://i.imgur.com/YYBp0qu.png" />
     <meta property="og:url" content="https://desktopicon.net" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Desktop Icon Selector" />
 
     <!-- Additional Meta Tags -->
-    <meta name="description" content="Say goodbye to boring desktops and hello to a beautiful desktop. Pick your icons, choose your colors, and design your desktop your way!">
-    <meta name="keywords" content="desktop icons, icon selector, desktop customization, icon design, desktop design, icon colors">
+    <meta name="description"
+        content="Say goodbye to boring desktops and hello to a beautiful desktop. Pick your icons, choose your colors, and design your desktop your way!">
+    <meta name="keywords"
+        content="desktop icons, icon selector, desktop customization, icon design, desktop design, icon colors">
     <meta name="author" content="Your Name or Company Name">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
-    <!-- <meta name="theme-color" content="#3498db"> -->
 </head>
 
 <body>
@@ -43,65 +45,83 @@
         </main>
 
         <aside>
-            <div class="sidebar-section">
-                <input type="text" id="search-bar" placeholder="Search for icons...">
-
-                <div class="gradient-picker-container">
-                    <div id="color-gradient">
-                        <div class="color-cursor"></div>
-                    </div>
-                    <div id="color-slider">
-                        <div class="hue-cursor"></div>
-                    </div>
-
-                    <div id="color-preview"></div>
-
-                    <div class="rgb-inputs">
-                        <div class="rgb-input">
-                            <label for="r-value">R</label>
-                            <input type="number" id="r-value" min="0" max="255" value="255">
+            <input type="text" id="search-bar" placeholder="Search for icons...">
+            
+            <div class="sidebar-section colour-options">
+                <button class="collapse-toggle" data-target=".colour-options-content">Colour Options ▼</button>
+                <div class="colour-options-content">
+                    <div class="gradient-picker-container">
+                        <div id="color-gradient">
+                            <div class="color-cursor"></div>
                         </div>
-                        <div class="rgb-input">
-                            <label for="g-value">G</label>
-                            <input type="number" id="g-value" min="0" max="255" value="0">
+                        <div id="color-slider">
+                            <div class="hue-cursor"></div>
                         </div>
-                        <div class="rgb-input">
-                            <label for="b-value">B</label>
-                            <input type="number" id="b-value" min="0" max="255" value="0">
+
+                        <div id="color-preview"></div>
+
+                        <div class="rgb-inputs">
+                            <div class="rgb-input">
+                                <label for="r-value">R</label>
+                                <input type="number" id="r-value" min="0" max="255" value="255">
+                            </div>
+                            <div class="rgb-input">
+                                <label for="g-value">G</label>
+                                <input type="number" id="g-value" min="0" max="255" value="0">
+                            </div>
+                            <div class="rgb-input">
+                                <label for="b-value">B</label>
+                                <input type="number" id="b-value" min="0" max="255" value="0">
+                            </div>
+                        </div>
+
+                        <div class="hex-input-container">
+                            <label for="hex-value">#</label>
+                            <input type="text" id="hex-value" maxlength="6" placeholder="FF0000">
                         </div>
                     </div>
 
-                    <div class="hex-input-container">
-                        <label for="hex-value">#</label>
-                        <input type="text" id="hex-value" maxlength="6" placeholder="FF0000">
+                    <div id="color-picker-custom">
+                        <div class="color-option selected" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                        <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+                        <div class="color-option" data-color="#00FF00" style="background-color: #00FF00;"></div>
+                        <div class="color-option" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
+                        <div class="color-option" data-color="#0000FF" style="background-color: #0000FF;"></div>
+                        <div class="color-option" data-color="#FF00FF" style="background-color: #FF00FF;"></div>
+                        <div class="color-option" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+                        <div class="color-option" data-color="#000000" style="background-color: #000000;"></div>
                     </div>
-                </div>
 
-                <div id="color-picker-custom">
-                    <div class="color-option selected" data-color="#FF0000" style="background-color: #FF0000;"></div>
-                    <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
-                    <div class="color-option" data-color="#00FF00" style="background-color: #00FF00;"></div>
-                    <div class="color-option" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
-                    <div class="color-option" data-color="#0000FF" style="background-color: #0000FF;"></div>
-                    <div class="color-option" data-color="#FF00FF" style="background-color: #FF00FF;"></div>
-                    <div class="color-option" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
-                    <div class="color-option" data-color="#000000" style="background-color: #000000;"></div>
-                </div>
-
-                <div class="button-container">
-                    <div class="action-buttons">
+                    <!-- <div class="action-buttons">
                         <button id="download-selection">Download Selection</button>
                         <button id="reset-selection">↺</button>
                     </div>
-                    <a href="/request" id="request-icon">Icon Not Here?</a>
+                    <a href="/request" id="request-icon">Icon Not Here?</a> -->
                 </div>
+            </div>
+            
+            <div class="sidebar-section icons-preview">
+                <button class="collapse-toggle" data-target=".icons-preview-content" disabled="true">Review ▲ (Coming Soon!)</button>
+                <div class="icons-preview-content" style="display: none;">
+                    <h2>Review</h2>
+                    <div id="preview-container">
+                        <div class="preview-icon" id="preview-icon-1"></div>
+                        <div class="preview-icon" id="preview-icon-2"></div>
+                        <div class="preview-icon" id="preview-icon-3"></div>
+                        <div class="preview-icon" id="preview-icon-4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section main-buttons">
+                <div class="action-buttons">
+                    <button id="download-selection">Download Selection</button>
+                    <button id="reset-selection">↺</button>
+                </div>
+                <a href="/request" id="request-icon">Icon Not Here?</a>
             </div>
         </aside>
     </div>
-
-    <!-- <footer>
-        <p>&copy; 2025 Desktop Icon Selector</p>
-    </footer> -->
 
     <!-- Loading spinner overlay -->
     <div class="loading-overlay">
@@ -112,6 +132,21 @@
     <input type="hidden" id="color-picker" value="#FF0000">
 
     <script src="app.js"></script>
+    <script>
+        // Add toggle functionality for collapsible sections
+        document.querySelectorAll('.collapse-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const target = document.querySelector(button.dataset.target);
+                if (target.style.display === 'none') {
+                    target.style.display = 'block';
+                    button.textContent = button.textContent.replace('▲', '▼');
+                } else {
+                    target.style.display = 'none';
+                    button.textContent = button.textContent.replace('▼', '▲');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
