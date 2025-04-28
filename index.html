@@ -101,14 +101,11 @@
             </div>
             
             <div class="sidebar-section icons-preview">
-                <button class="collapse-toggle" data-target=".icons-preview-content" disabled="true">Review ▲ (Coming Soon!)</button>
-                <div class="icons-preview-content" style="display: none;">
-                    <h2>Review</h2>
+                <button class="collapse-toggle" data-target=".icons-preview-content">Selected Icons ▲</button>
+                <div class="icons-preview-content">
+                    <!-- <h2>Selected Icons</h2> -->
                     <div id="preview-container">
-                        <div class="preview-icon" id="preview-icon-1"></div>
-                        <div class="preview-icon" id="preview-icon-2"></div>
-                        <div class="preview-icon" id="preview-icon-3"></div>
-                        <div class="preview-icon" id="preview-icon-4"></div>
+                        <!-- This will be populated dynamically -->
                     </div>
                 </div>
             </div>
@@ -135,8 +132,9 @@
     <script>
         // Add toggle functionality for collapsible sections
         document.querySelectorAll('.collapse-toggle').forEach(button => {
+            const target = document.querySelector(button.dataset.target);
+
             button.addEventListener('click', () => {
-                const target = document.querySelector(button.dataset.target);
                 if (target.style.display === 'none') {
                     target.style.display = 'block';
                     button.textContent = button.textContent.replace('▲', '▼');

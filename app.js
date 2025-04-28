@@ -621,6 +621,7 @@ async function loadIcons(filter = "", page = 1) {
             const ctx = canvas.getContext("2d");
 
             const img = new Image();
+            img.crossOrigin = "anonymous"; // Add this line to enable CORS
             img.src = icon.src;
             img.onload = () => {
                 canvas.width = img.width;
@@ -674,6 +675,7 @@ function toggleSelection(iconName) {
         selectedIcons.push(iconName);
     }
     updateSelectionUI();
+    updatePreviewArea(); // Add this line
 }
 
 // Update UI for selected icons
@@ -685,6 +687,46 @@ function updateSelectionUI() {
             icon.classList.remove("selected");
         }
     });
+}
+
+function updatePreviewArea() {
+    const previewContainer = document.getElementById("preview-container");
+    const previewSection = document.querySelector(".icons-preview-content");
+    const previewToggle = document.querySelector('[data-target=".icons-preview-content"]');
+    
+    // Remember the current display state before updating
+    const isPreviewOpen = previewSection.style.display === "block";
+    
+    // Clear previous preview content
+    previewContainer.innerHTML = "";
+    
+    // If no icons are selected, show a message
+    if (selectedIcons.length === 0) {
+        const noSelectionMsg = document.createElement("div");
+        noSelectionMsg.className = "preview-text";
+        noSelectionMsg.textContent = "No icons selected";
+        previewContainer.appendChild(noSelectionMsg);
+    } else {
+        // Display all selected icon names in a list format
+        // Use a single column layout instead of the grid
+        previewContainer.style.display = "flex";
+        previewContainer.style.flexDirection = "column";
+        previewContainer.style.gap = "8px";
+        previewContainer.style.width = "100%";
+        previewContainer.style.maxHeight = "999999px";
+        
+        // Display all selected icons without a limit
+        selectedIcons.forEach(iconName => {
+            const previewItem = document.createElement("div");
+            previewItem.className = "preview-text";
+            previewItem.textContent = iconName;
+            previewContainer.appendChild(previewItem);
+        });
+    }
+    
+    // Restore the previous state (open or closed)
+    previewSection.style.display = isPreviewOpen ? "block" : "none";
+    previewToggle.classList.toggle("collapsed", !isPreviewOpen);
 }
 
 // Update the search bar event listener to reset to page 1
@@ -748,6 +790,7 @@ confirmButton.addEventListener("click", async () => {
             const iconData = allIcons.find(icon => icon.name === iconName);
             if (iconData) {
                 const img = new Image();
+                img.crossOrigin = "anonymous"; // Add this line to enable CORS
                 img.src = iconData.src;
 
                 await new Promise(resolve => {
@@ -804,6 +847,7 @@ confirmButton.addEventListener("click", async () => {
 document.getElementById("reset-selection").addEventListener("click", () => {
     selectedIcons = [];
     updateSelectionUI();
+    updatePreviewArea(); // Add this line
 });
 
 function reorganizeColorPicker() {
@@ -853,7 +897,38 @@ function reorganizeColorPicker() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', reorganizeColorPicker);
+document.addEventListener("DOMContentLoaded", function() {
+    reorganizeColorPicker();
+    updatePreviewArea();
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    #preview-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+    
+    .preview-text {
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #1f2937;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        color: #ecf0f1;
+        text-align: left;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+`;
+document.head.appendChild(style);
 
 // Initial load of icons
 loadIcons();
