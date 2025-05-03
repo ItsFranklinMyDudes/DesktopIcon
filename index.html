@@ -24,13 +24,21 @@
     <meta name="description"
         content="Say goodbye to boring desktops and hello to a beautiful desktop. Pick your icons, choose your colors, and design your desktop your way!">
     <meta name="keywords"
-        content="desktop icons, icon selector, desktop customization, icon design, desktop design, icon colors">
+        content="desktop icons, icon selector, customize desktop, desktop icon pack, icon recolor, desktop aesthetics, personalize desktop, icon downloader, aesthetic icons, desktop theme, custom icons">
     <meta name="author" content="Your Name or Company Name">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
 </head>
 
 <body>
+    <div id="mobile-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Desktop Only</h2>
+            <p>This site is designed for desktop devices and their icons (Not Recommended continuing). Mobile support may be added in the future.</p>
+            <button class="close-button" onclick="document.getElementById('mobile-modal').classList.add('hidden')">Close</button>
+        </div>
+    </div>
+
     <header style="display: flex; align-items: center; justify-content: center; gap: 10px;">
         <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit; gap: 10px;">
             <img src="Logo Drop Shadow.png" alt="Desktop Icon Selector Logo" width="50px">
@@ -48,7 +56,7 @@
 
         <aside>
             <input type="text" id="search-bar" placeholder="Search for icons...">
-            
+
             <div class="sidebar-section colour-options">
                 <button class="collapse-toggle" data-target=".colour-options-content">Colour Options ▼</button>
                 <div class="colour-options-content">
@@ -84,7 +92,8 @@
                     </div>
 
                     <div id="color-picker-custom">
-                        <div class="color-option selected" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                        <div class="color-option selected" data-color="#FF0000" style="background-color: #FF0000;">
+                        </div>
                         <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
                         <div class="color-option" data-color="#00FF00" style="background-color: #00FF00;"></div>
                         <div class="color-option" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
@@ -101,7 +110,7 @@
                     <a href="/request" id="request-icon">Icon Not Here?</a> -->
                 </div>
             </div>
-            
+
             <div class="sidebar-section icons-preview">
                 <button class="collapse-toggle" data-target=".icons-preview-content">Selected Icons ▲</button>
                 <div class="icons-preview-content">
@@ -111,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="sidebar-section main-buttons">
                 <div class="action-buttons">
                     <button id="download-selection">Download Selection</button>
@@ -145,6 +154,14 @@
                     button.textContent = button.textContent.replace('▼', '▲');
                 }
             });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const isMobile = /mobile|android|iphone|ipad|tablet/i.test(navigator.userAgent);
+            if (isMobile) {
+                const modal = document.getElementById("mobile-modal");
+                modal.classList.remove("hidden");
+            }
         });
     </script>
 </body>

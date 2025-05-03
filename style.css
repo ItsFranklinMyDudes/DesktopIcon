@@ -709,3 +709,58 @@ aside {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 }
+
+/* Mobile detection modal styles */
+#mobile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#mobile-modal.hidden {
+    display: none;
+}
+
+#mobile-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+#mobile-modal .modal-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #e74c3c;
+}
+
+#mobile-modal .modal-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+#mobile-modal .close-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#mobile-modal .close-button:hover {
+    background-color: #2980b9;
+}

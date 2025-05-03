@@ -61,50 +61,50 @@ const deleteOldFiles = (directory, maxAgeMs) => {
 deleteOldFiles(uploadsDir, 86400000); // 24 hours in milliseconds
 
 // Block mobile users
-app.use((req, res, next) => {
-    const userAgent = req.headers['user-agent'] || '';
-    const isMobile = /mobile|android|iphone|ipad|tablet/i.test(userAgent);
+// app.use((req, res, next) => {
+//     const userAgent = req.headers['user-agent'] || '';
+//     const isMobile = /mobile|android|iphone|ipad|tablet/i.test(userAgent);
 
-    if (isMobile) {
-        return res.status(403).send(`
-            <html>
-                <head>
-                    <title>Access Denied</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            text-align: center;
-                            margin: 0;
-                            padding: 0;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100vh;
-                            background-color: #f5f5f5;
-                            color: #333;
-                        }
-                        h1 {
-                            font-size: 2rem;
-                            color: #e74c3c;
-                        }
-                        p {
-                            font-size: 1rem;
-                            margin-top: 10px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>Access Denied</h1>
-                    <p>This site is designed for desktop devices only. Please access it from a desktop for the best experience.</p>
-                </body>
-            </html>
-        `);
-    }
+//     if (isMobile) {
+//         return res.status(403).send(`
+//             <html>
+//                 <head>
+//                     <title>Access Denied</title>
+//                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//                     <style>
+//                         body {
+//                             font-family: Arial, sans-serif;
+//                             text-align: center;
+//                             margin: 0;
+//                             padding: 0;
+//                             display: flex;
+//                             flex-direction: column;
+//                             justify-content: center;
+//                             align-items: center;
+//                             height: 100vh;
+//                             background-color: #f5f5f5;
+//                             color: #333;
+//                         }
+//                         h1 {
+//                             font-size: 2rem;
+//                             color: #e74c3c;
+//                         }
+//                         p {
+//                             font-size: 1rem;
+//                             margin-top: 10px;
+//                         }
+//                     </style>
+//                 </head>
+//                 <body>
+//                     <h1>Access Denied</h1>
+//                     <p>This site is designed for desktop devices only. Please access it from a desktop for the best experience.</p>
+//                 </body>
+//             </html>
+//         `);
+//     }
 
-    next();
-});
+//     next();
+// });
 
 app.use('/icons', express.static(path.join(__dirname, 'icons'), {
     setHeaders: (res) => {
