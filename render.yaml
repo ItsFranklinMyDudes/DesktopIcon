@@ -1,0 +1,20 @@
+# Exported from Render on 2025-05-03T09:39:31Z
+services:
+- type: web
+  name: DesktopIcon
+  runtime: node
+  repo: https://github.com/ItsFranklinMyDudes/DesktopIcon
+  plan: starter
+  envVars:
+  - key: WEBHOOK_URL
+    sync: false
+  - key: PORT
+    sync: false
+  region: virginia
+  buildCommand: npm install
+  startCommand: node server.js
+  domains:
+  - cdn.desktopicon.net
+  - www.desktopicon.net
+  - desktopicon.net
+version: "1"
