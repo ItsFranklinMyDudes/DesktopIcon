@@ -6,10 +6,82 @@
         "category": "Audio"
     },
     {
+        "name": "Adobe Acrobat Pro",
+        "src": "./icons/Adobe Acrobat Pro.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Acrobat Pro.ico",
+        "category": "Artist"
+    },
+    {
         "name": "Adobe After Effects",
         "src": "./icons/Adobe After Effects.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Adobe After Effects.ico",
         "category": "Artist"
+    },
+    {
+        "name": "Adobe Animate",
+        "src": "./icons/Adobe Animate.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Animate.ico",
+        "category": "Artist"
+    },
+    {
+        "name": "Adobe Audition",
+        "src": "./icons/Adobe Audition.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Audition.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Bridge",
+        "src": "./icons/Adobe Bridge.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Bridge.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Character Animator",
+        "src": "./icons/Adobe Character Animator.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Character Animator.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Creative Cloud",
+        "src": "./icons/Adobe Creative Cloud.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Creative Cloud.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Dimension",
+        "src": "./icons/Adobe Dimension.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Dimension.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Dreamweaver",
+        "src": "./icons/Adobe Dreamweaver.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Dreamweaver.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Express",
+        "src": "./icons/Adobe Express.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Express.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Firefly",
+        "src": "./icons/Adobe Firefly.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Firefly.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe FrameMaker",
+        "src": "./icons/Adobe FrameMaker.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe FrameMaker.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Fresco",
+        "src": "./icons/Adobe Fresco.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Fresco.ico",
+        "category": "null"
     },
     {
         "name": "Adobe Illustrator",
@@ -18,10 +90,34 @@
         "category": "Artist"
     },
     {
+        "name": "Adobe InDesign",
+        "src": "./icons/Adobe InDesign.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe InDesign.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Lightroom (1)",
+        "src": "./icons/Adobe Lightroom (1).ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Lightroom (1).ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Lightroom Classic",
+        "src": "./icons/Adobe Lightroom Classic.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Lightroom Classic.ico",
+        "category": "null"
+    },
+    {
         "name": "Adobe Lightroom",
         "src": "./icons/Adobe Lightroom.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Adobe Lightroom.ico",
         "category": "Artist"
+    },
+    {
+        "name": "Adobe Media Encoder",
+        "src": "./icons/Adobe Media Encoder.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Media Encoder.ico",
+        "category": "null"
     },
     {
         "name": "Adobe Photoshop",
@@ -30,16 +126,52 @@
         "category": "Artist"
     },
     {
+        "name": "Adobe Prelude",
+        "src": "./icons/Adobe Prelude.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Prelude.ico",
+        "category": "null"
+    },
+    {
         "name": "Adobe Premiere Pro",
         "src": "./icons/Adobe Premiere Pro.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Adobe Premiere Pro.ico",
         "category": "Artist"
     },
     {
-        "name": "Affinity",
+        "name": "Adobe Premiere Rush",
+        "src": "./icons/Adobe Premiere Rush.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Premiere Rush.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Reader",
+        "src": "./icons/Adobe Reader.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Reader.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe RoboHelp",
+        "src": "./icons/Adobe RoboHelp.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe RoboHelp.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe Scan",
+        "src": "./icons/Adobe Scan.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe Scan.ico",
+        "category": "null"
+    },
+    {
+        "name": "Adobe XD",
+        "src": "./icons/Adobe XD.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Adobe XD.ico",
+        "category": "null"
+    },
+    {
+        "name": "Affinity Photo",
         "src": "./icons/Affinity Photo.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Affinity Photo.ico",
-        "category": "Artist"
+        "category": "null"
     },
     {
         "name": "Among Us",
@@ -150,6 +282,114 @@
         "category": "Browser"
     },
     {
+        "name": "Call of Duty Advanced Warfare",
+        "src": "./icons/Call of Duty Advanced Warfare.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Advanced Warfare.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Black Ops 4",
+        "src": "./icons/Call of Duty Black Ops 4.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Black Ops 4.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Black Ops II",
+        "src": "./icons/Call of Duty Black Ops II.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Black Ops II.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Black Ops III",
+        "src": "./icons/Call of Duty Black Ops III.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Black Ops III.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Black Ops",
+        "src": "./icons/Call of Duty Black Ops.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Black Ops.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Ghosts",
+        "src": "./icons/Call of Duty Ghosts.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Ghosts.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Infinite Warfare",
+        "src": "./icons/Call of Duty Infinite Warfare.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Infinite Warfare.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare 1",
+        "src": "./icons/Call of Duty Modern Warfare 1.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare 1.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare 2",
+        "src": "./icons/Call of Duty Modern Warfare 2.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare 2.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare 3",
+        "src": "./icons/Call of Duty Modern Warfare 3.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare 3.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare II",
+        "src": "./icons/Call of Duty Modern Warfare II.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare II.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare III",
+        "src": "./icons/Call of Duty Modern Warfare III.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare III.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Modern Warfare reboot",
+        "src": "./icons/Call of Duty Modern Warfare reboot.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Modern Warfare reboot.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Vanguard",
+        "src": "./icons/Call of Duty Vanguard.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Vanguard.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Warzone 2.0",
+        "src": "./icons/Call of Duty Warzone 2.0.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Warzone 2.0.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty Warzone",
+        "src": "./icons/Call of Duty Warzone.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty Warzone.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty World at War",
+        "src": "./icons/Call of Duty World at War.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty World at War.ico",
+        "category": "null"
+    },
+    {
+        "name": "Call of Duty WWII",
+        "src": "./icons/Call of Duty WWII.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Call of Duty WWII.ico",
+        "category": "null"
+    },
+    {
         "name": "Call of Duty",
         "src": "./icons/Call of Duty.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Call of Duty.ico",
@@ -222,10 +462,10 @@
         "category": "Games"
     },
     {
-        "name": "Curse Forge",
+        "name": "CurseForge",
         "src": "./icons/CurseForge.ico",
         "cdn": "https://cdn.desktopicon.net/icons/CurseForge.ico",
-        "category": "Game Launcher"
+        "category": "null"
     },
     {
         "name": "Dark Souls",
@@ -420,10 +660,22 @@
         "category": "Games"
     },
     {
-        "name": "GTAV",
-        "src": "./icons/GTAV.ico",
-        "cdn": "https://cdn.desktopicon.net/icons/GTAV.ico",
-        "category": "Games"
+        "name": "Grand Theft Auto III",
+        "src": "./icons/Grand Theft Auto III.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Grand Theft Auto III.ico",
+        "category": "null"
+    },
+    {
+        "name": "Grand Theft Auto IV",
+        "src": "./icons/Grand Theft Auto IV.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Grand Theft Auto IV.ico",
+        "category": "null"
+    },
+    {
+        "name": "Grand Theft Auto V",
+        "src": "./icons/Grand Theft Auto V.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Grand Theft Auto V.ico",
+        "category": "null"
     },
     {
         "name": "Guilded",
@@ -462,10 +714,10 @@
         "category": "Programmer"
     },
     {
-        "name": "IOBit Unlocker",
+        "name": "IObit Unlocker",
         "src": "./icons/IObit Unlocker.ico",
         "cdn": "https://cdn.desktopicon.net/icons/IObit Unlocker.ico",
-        "category": "System"
+        "category": "null"
     },
     {
         "name": "It Takes Two",
@@ -510,10 +762,10 @@
         "category": "Office"
     },
     {
-        "name": "Logitech G HUB",
+        "name": "logitech G HUB",
         "src": "./icons/logitech G HUB.ico",
         "cdn": "https://cdn.desktopicon.net/icons/logitech G HUB.ico",
-        "category": "Other"
+        "category": "null"
     },
     {
         "name": "Lunar Client",
@@ -592,6 +844,12 @@
         "src": "./icons/Microsoft PowerPoint.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Microsoft PowerPoint.ico",
         "category": "Office"
+    },
+    {
+        "name": "Microsoft Word",
+        "src": "./icons/Microsoft Word.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Microsoft Word.ico",
+        "category": "null"
     },
     {
         "name": "Minecraft Launcher",
@@ -696,10 +954,10 @@
         "category": "Games"
     },
     {
-        "name": "PlayStation",
+        "name": "PlayStation App",
         "src": "./icons/PlayStation App.ico",
         "cdn": "https://cdn.desktopicon.net/icons/PlayStation App.ico",
-        "category": "Game Launcher"
+        "category": "null"
     },
     {
         "name": "Portal",
@@ -816,10 +1074,10 @@
         "category": "Games"
     },
     {
-        "name": "Screw Driver",
+        "name": "Screw Drivers",
         "src": "./icons/Screw Drivers.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Screw Drivers.ico",
-        "category": "Games"
+        "category": "null"
     },
     {
         "name": "Sea of Thieves",
@@ -888,6 +1146,12 @@
         "category": "Games"
     },
     {
+        "name": "Starfield",
+        "src": "./icons/Starfield.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Starfield.ico",
+        "category": "null"
+    },
+    {
         "name": "Steam",
         "src": "./icons/Steam.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Steam.ico",
@@ -910,6 +1174,36 @@
         "src": "./icons/Sublime Text.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Sublime Text.ico",
         "category": "Programmer"
+    },
+    {
+        "name": "Substance 3D Designer",
+        "src": "./icons/Substance 3D Designer.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Substance 3D Designer.ico",
+        "category": "null"
+    },
+    {
+        "name": "Substance 3D Modeler",
+        "src": "./icons/Substance 3D Modeler.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Substance 3D Modeler.ico",
+        "category": "null"
+    },
+    {
+        "name": "Substance 3D Painter",
+        "src": "./icons/Substance 3D Painter.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Substance 3D Painter.ico",
+        "category": "null"
+    },
+    {
+        "name": "Substance 3D Sampler",
+        "src": "./icons/Substance 3D Sampler.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Substance 3D Sampler.ico",
+        "category": "null"
+    },
+    {
+        "name": "Substance 3D Stager",
+        "src": "./icons/Substance 3D Stager.ico",
+        "cdn": "https://cdn.desktopicon.net/icons/Substance 3D Stager.ico",
+        "category": "null"
     },
     {
         "name": "Supermarket Together",
@@ -1041,20 +1335,19 @@
         "name": "WSL",
         "src": "./icons/WSL.ico",
         "cdn": "https://cdn.desktopicon.net/icons/WSL.ico",
-        "category": "Programmer",
-        "disabled": true
+        "category": "Programmer"
     },
     {
-        "name": "XBox App",
+        "name": "Xbox App",
         "src": "./icons/Xbox App.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Xbox App.ico",
-        "category": "Game Launcher"
+        "category": "null"
     },
     {
-        "name": "XCode",
+        "name": "Xcode",
         "src": "./icons/Xcode.ico",
         "cdn": "https://cdn.desktopicon.net/icons/Xcode.ico",
-        "category": "Programmer"
+        "category": "null"
     },
     {
         "name": "YouTube Music",
