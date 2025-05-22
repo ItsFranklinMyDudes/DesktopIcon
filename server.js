@@ -148,12 +148,12 @@ app.get("/api/icons", async (req, res) => {
         );
 
         // Log icons in the specified format
-        console.log("Icons in the specified format:");
+        // console.log("Icons in the specified format:");
         const files = fs.readdirSync(iconsDir).filter(file => file.endsWith(".ico"));
         files.forEach(file => {
             const name = path.basename(file, path.extname(file));
             const category = list.find(item => item.name === name)?.category || "null";
-            console.log(`{\n    "name": "${name}",\n    "src": "./icons/${file}",\n    "cdn": "https://cdn.desktopicon.net/icons/${file}",\n    "category": "${category}"\n},`);
+            // console.log(`{\n    "name": "${name}",\n    "src": "./icons/${file}",\n    "cdn": "https://cdn.desktopicon.net/icons/${file}",\n    "category": "${category}"\n},`);
         });
 
         res.json(icons);
