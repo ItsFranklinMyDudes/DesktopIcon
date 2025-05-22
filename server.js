@@ -122,39 +122,80 @@ app.get("/api/icons", async (req, res) => {
     const list = require('./IconList.json');
 
     try {
-        const icons = await Promise.all(
-            list
-                .filter(icon => !icon.disabled)
-                .map(async (icon) => {
-                    let finalSrc = icon.cdn || (useCDN ? icon.cdn : icon.src);
-
-                    // Check if the CDN URL is accessible
-                    if (icon.cdn || useCDN) {
-                        try {
-                            const response = await fetch(finalSrc, { method: 'HEAD' });
-                            if (!response.ok) {
-                                throw new Error(`CDN URL not accessible`);
-                            }
-                        } catch (error) {
-                            finalSrc = icon.src; // Fallback to src if CDN URL fails
-                        }
-                    }
-
-                    return {
-                        name: icon.name,
-                        src: finalSrc
-                    };
-                })
-        );
-
-        // Log icons in the specified format
-        // console.log("Icons in the specified format:");
+        // Get all icon files from the folder
         const files = fs.readdirSync(iconsDir).filter(file => file.endsWith(".ico"));
+        
+        // Create a map of existing icons from IconList.json for quick lookup
+        const existingIconsMap = new Map(list.map(icon => [icon.name, icon]));
+        
+        // Create autolist.json with all icons (existing + folder icons)
+        const autoList = [];
+        const processedNames = new Set();
+
+        // First, add all existing icons from IconList.json
+        list.forEach(icon => {
+            if (!icon.disabled) {
+                autoList.push(icon);
+                processedNames.add(icon.name);
+            }
+        });
+
+        // Then, add any icons from folder that aren't in IconList.json
         files.forEach(file => {
             const name = path.basename(file, path.extname(file));
-            const category = list.find(item => item.name === name)?.category || "null";
-            // console.log(`{\n    "name": "${name}",\n    "src": "./icons/${file}",\n    "cdn": "https://cdn.desktopicon.net/icons/${file}",\n    "category": "${category}"\n},`);
+            if (!processedNames.has(name)) {
+                autoList.push({
+                    "name": name,
+                    "src": `./icons/${file}`,
+                    "cdn": `https://cdn.desktopicon.net/icons/${file}`,
+                    "category": "null"
+                });
+                processedNames.add(name);
+            }
         });
+
+        // Write the autolist.json file
+        fs.writeFileSync('./autolist.json', JSON.stringify(autoList, null, 4));
+
+        // Process icons for the API response
+        const icons = await Promise.all(
+            autoList.map(async (icon) => {
+                let finalSrc = icon.cdn || (useCDN ? icon.cdn : icon.src);
+
+                // Check if the CDN URL is accessible
+                if (icon.cdn || useCDN) {
+                    try {
+                        const response = await fetch(finalSrc, { method: 'HEAD' });
+                        if (!response.ok) {
+                            throw new Error(`CDN URL not accessible`);
+                        }
+                    } catch (error) {
+                        // First fallback to src
+                        finalSrc = icon.src;
+                        
+                        // If src also doesn't exist or fails, fallback to folder icon
+                        const folderIconPath = `./icons/${icon.name}.ico`;
+                        if (fs.existsSync(path.join(__dirname, folderIconPath))) {
+                            finalSrc = folderIconPath;
+                        }
+                    }
+                }
+
+                // Ensure we have a valid icon source (prefer folder icons if available)
+                const folderIconPath = `./icons/${icon.name}.ico`;
+                if (fs.existsSync(path.join(__dirname, folderIconPath))) {
+                    // If we're not using CDN or CDN failed, use the folder icon
+                    if (!useCDN || finalSrc === icon.src) {
+                        finalSrc = folderIconPath;
+                    }
+                }
+
+                return {
+                    name: icon.name,
+                    src: finalSrc
+                };
+            })
+        );
 
         res.json(icons);
     } catch (error) {
